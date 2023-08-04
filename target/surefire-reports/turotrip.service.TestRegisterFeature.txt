@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------
+Test set: turotrip.service.TestRegisterFeature
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.074 s <<< FAILURE! - in turotrip.service.TestRegisterFeature
+testRegistrationSuccess  Time elapsed: 0.051 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	UserService cannot be resolved to a type
+	UserService cannot be resolved to a type
+	User cannot be resolved to a type
+	User cannot be resolved to a type
+	ServiceException cannot be resolved to a type
+
+	at turotrip.service.TestRegisterFeature.testRegistrationSuccess(TestRegisterFeature.java:30)
+
+testUserNull  Time elapsed: 0 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	UserService cannot be resolved to a type
+	UserService cannot be resolved to a type
+	User cannot be resolved to a type
+	ServiceException cannot be resolved to a type
+
+	at turotrip.service.TestRegisterFeature.testUserNull(TestRegisterFeature.java:54)
+
