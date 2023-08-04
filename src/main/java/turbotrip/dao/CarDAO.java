@@ -15,7 +15,7 @@ public class CarDAO {
 			Connection connect = getConnection();
 			System.out.println(connect);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace();dfghj
 		}
 	}
 	public static Connection getConnection() throws SQLException {

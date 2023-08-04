@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: turbotrip.service.TestRegisterFeature
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.124 s <<< FAILURE! - in turbotrip.service.TestRegisterFeature
+testRegistrationSuccess  Time elapsed: 0.105 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+	at turbotrip.service.TestRegisterFeature.testRegistrationSuccess(TestRegisterFeature.java:38)
+
+testUserNull  Time elapsed: 0.017 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <User details not valid> but was: <turbotrip.validation.exception.InvalidUserException: User details not valid>
+	at turbotrip.service.TestRegisterFeature.testUserNull(TestRegisterFeature.java:53)
+
