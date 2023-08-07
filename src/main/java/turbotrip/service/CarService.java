@@ -36,12 +36,29 @@ public class CarService {
 		return CarDAO.readCar(car);
 	}
  
-	public static void main(String[] args) {
-	      Car car  = new Car("TN 07 CD 1234");
-	       
-	      System.out.println(car.toString());
+	//update cars
+	
+	
+	public boolean updateCar(Car car , String Carno) throws ServiceException, InvalidUserException, DAOException {
+		CarDAO carDAO = new CarDAO();
+		try {
+			if(CarValidator.validateupdateCar(car)) {
+			if (CarDAO.updateCar(car,Carno)) {
+				System.out.println(Carno + " Successfully Your Car updated!");
+				return true;
+			} else {
+				System.out.println("not successfully updated");
+				return false;
+			}
+			} else {
+				System.out.println("not successfully updated");
+				return false;
+			}
 
-	      
+		} catch (DAOException | InvalidUserException e) {
+			throw new ServiceException(e);
 		}
+	
+	}
 	} 
 	

@@ -44,19 +44,5 @@ public class TestReadCarList {
 	 assertNotEquals("carnumber: tn 08 cd 0099",output);
 	}
 	
-//	
-//	 @Test
-//	    public void testUpdateSuccess2() {
-//	        try {
-//	            CarService carService = new CarService();
-//	            Car car1 = new Car("TN 07 CD 1234");
-//	            String s = carService.listCar(car1);
-//	            String[] split = s.split(",");
-//	            String output = split[0].toLowerCase().trim();
-//	            
-//	            assertFalse("Expected car number to be different", "carnumber: tn 07 cd 1234".equalsIgnoreCase(output));
-//	        } catch (ServiceException | InvalidUserException | DAOException e) {
-//	            // Handle exceptions or fail the test as appropriate
-//	        }
-//	    }
+
 }

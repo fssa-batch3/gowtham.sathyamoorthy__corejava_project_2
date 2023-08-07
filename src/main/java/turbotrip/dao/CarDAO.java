@@ -29,7 +29,7 @@ public class CarDAO {
 		final String insertQuery = "INSERT INTO car_list (car_number, car_model, car_image, car_description)VALUES (?,?,?,?)";
 		try (Connection connect = getConnection(); PreparedStatement pst = connect.prepareStatement(insertQuery);) {
 
-			pst.setString(1, car.getCarNo());
+			pst.setString(1, car.getCarNo().toLowerCase().trim());
 			pst.setString(2, car.getCarmodel());
 			pst.setString(3, car.getCarImage());
 			pst.setString(4, car.getDescription());
@@ -45,7 +45,7 @@ public class CarDAO {
 		ResultSet result = null;
 		StringBuilder resultBuilder = new StringBuilder();
 		try (Connection connect = getConnection(); PreparedStatement pst = connect.prepareStatement(selectQuery)) {
-			pst.setString(1, car.getCarNo());
+			pst.setString(1, car.getCarNo().toLowerCase().trim());
 			result = pst.executeQuery();
 
 			if (!result.isBeforeFirst()) {
@@ -70,15 +70,20 @@ public class CarDAO {
 		}
 	}
 
-	public static void main(String[] args) {
-		Car car = new Car("TN 07 CD 9876");
+	//Update carlist
+	
+	public static boolean updateCar(Car car , String Carno) throws DAOException {
+		 String updateQuery = "UPDATE car_list SET car_image=?, car_description=?   WHERE car_number= '"+ Carno.toLowerCase().trim() +"';";
+		try (Connection connect = getConnection(); PreparedStatement pst = connect.prepareStatement(updateQuery);) {
 
-		CarDAO reading = new CarDAO();
-		try {
-			System.out.println(reading.readCar(car));
-		} catch (DAOException e) {
-		
-			e.printStackTrace();
+			pst.setString(1, car.getCarImage());
+			pst.setString(2, car.getDescription());
+			int rows = pst.executeUpdate();
+			return (rows == 1);
+		} catch (SQLException e) {
+			throw new DAOException(e);
 		}
 	}
+	
+	
 }

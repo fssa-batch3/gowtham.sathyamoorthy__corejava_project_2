@@ -20,6 +20,16 @@ public class CarValidator {
 		}
 
 	}
+	
+	public static boolean validateupdateCar(Car car) throws InvalidUserException {
+
+		if (car != null && validateURL(car.getCarImage()) && validateDescription(car.getDescription())) {
+			return true;
+		} else {
+			throw new InvalidUserException("User details not valid");
+		}
+
+	}
 
 	public static boolean validateURL(String imageUrl) throws InvalidUserException {
 		if (imageUrl == null || imageUrl.isEmpty()) {		
