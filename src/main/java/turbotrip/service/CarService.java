@@ -1,5 +1,7 @@
 package turbotrip.service;
 
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import turbotrip.dao.CarDAO;
 import turbotrip.dao.exception.DAOException;
 import turbotrip.model.Car;
@@ -20,11 +22,26 @@ public class CarService {
 				return false;
 			}
 
-		} catch (DAOException | InvalidUserException e) { 
+		} catch (DAOException | InvalidUserException e) {
 			throw new ServiceException(e);
 		}
-		
-		}
-}
 
+	}
+
+	// list cars
+
+	public String listCar(Car car) throws ServiceException, InvalidUserException, DAOException {
+		CarDAO CarDAO = new CarDAO();
+//	    Car car1 = new Car(car.getCarNo());
+		return CarDAO.readCar(car);
+	}
+ 
+	public static void main(String[] args) {
+	      Car car  = new Car("TN 07 CD 1234");
+	       
+	      System.out.println(car.toString());
+
+	      
+		}
+	} 
 	

@@ -3,11 +3,21 @@ package turbotrip.model;
 public class Car {
 
 	
+	@Override
+	public String toString() {
+		return "Car [carmodel=" + carmodel + ", carImage=" + carImage + ", carNo=" + carNo + ", description="
+				+ description + ", getCarmodel()=" + getCarmodel() + ", getCarImage()=" + getCarImage()
+				+ ", getCarNo()=" + getCarNo() + ", getDescription()=" + getDescription() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
 	private String carmodel;
 	private String  carImage;
 	private String carNo;
 	private String description;
 	
+	public Car(String carNo) {
+		this.carNo = carNo;
+	}
 	
 	
 	public Car(  String carNo, String carmodel, String carImage, String description) {

@@ -3,21 +3,13 @@ package turbotrip.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import turbotrip.dao.exception.DAOException;
 import turbotrip.model.Car;
-import turbotrip.model.User;
 
 public class CarDAO {
-	public static void main(String[] args) {
-		try {
-			Connection connect = getConnection();
-			System.out.println(connect);
-		} catch (Exception e) {
-			e.printStackTrace();dfghj
-		}
-	}
 	public static Connection getConnection() throws SQLException {
 		Connection connect = null;
 		String url = "jdbc:mysql://localhost/project";
@@ -32,10 +24,11 @@ public class CarDAO {
 		}
 		return connect;
 	}
+
 	public boolean createCar(Car car) throws DAOException {
 		final String insertQuery = "INSERT INTO car_list (car_number, car_model, car_image, car_description)VALUES (?,?,?,?)";
 		try (Connection connect = getConnection(); PreparedStatement pst = connect.prepareStatement(insertQuery);) {
-			
+
 			pst.setString(1, car.getCarNo());
 			pst.setString(2, car.getCarmodel());
 			pst.setString(3, car.getCarImage());
@@ -45,6 +38,47 @@ public class CarDAO {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
+	}
+
+	public String readCar(Car car) throws DAOException {
+		String selectQuery = "SELECT * FROM project.car_list WHERE car_number = ?";
+		ResultSet result = null;
+		StringBuilder resultBuilder = new StringBuilder();
+		try (Connection connect = getConnection(); PreparedStatement pst = connect.prepareStatement(selectQuery)) {
+			pst.setString(1, car.getCarNo());
+			result = pst.executeQuery();
+
+			if (!result.isBeforeFirst()) {
+				return "No Car found for this Number " + car.getCarNo();
+			}
+
+			while (result.next()) {
+				String number = result.getString("car_number");
+				String model = result.getString("car_model");
+				String img = result.getString("car_image");
+				String description = result.getString("car_description");
+
+				resultBuilder.append("carNumber: ").append(number).append(", carModel: ").append(model)
+						.append(", carImage: ").append(img).append(", carDescription: ").append(description)
+						.append("\n");
+
+
+			}
+			return resultBuilder.toString();
+		} catch (SQLException e) {
+			throw new DAOException(e);
 		}
 	}
+
+	public static void main(String[] args) {
+		Car car = new Car("TN 07 CD 9876");
+
+		CarDAO reading = new CarDAO();
+		try {
+			System.out.println(reading.readCar(car));
+		} catch (DAOException e) {
 		
+			e.printStackTrace();
+		}
+	}
+}
