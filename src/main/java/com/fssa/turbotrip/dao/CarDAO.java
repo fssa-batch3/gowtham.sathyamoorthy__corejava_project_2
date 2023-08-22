@@ -1,8 +1,9 @@
 package com.fssa.turbotrip.dao;
 
 import java.sql.Connection;
+
 import com.fssa.turbotrip.utils.ConnectionUtil;
-import java.sql.DriverManager;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.sql.SQLException;
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
 
-import io.github.cdimascio.dotenv.Dotenv;
+
 
 public class CarDAO {
 
