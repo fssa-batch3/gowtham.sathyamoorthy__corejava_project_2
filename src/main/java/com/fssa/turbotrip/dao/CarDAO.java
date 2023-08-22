@@ -21,7 +21,7 @@ public class CarDAO {
 			pst.setString(1, car.getCarNo().toLowerCase().trim());
 			pst.setString(2, car.getCarmodel());
 			pst.setString(3, car.getCarImage());
-			pst.setString(4, car.getDescription()); 
+			pst.setString(4, car.getDescription());  
 			int rows = pst.executeUpdate();
 			return (rows == 1);
 		} catch (SQLException e) {
@@ -75,90 +75,66 @@ public class CarDAO {
 	}
 
 	public static boolean sameNumberExist(String Carno) throws SQLException, DAOException {
+	    boolean match = false;
+	    int count = 0;
+	    
+	    try (Connection connection = ConnectionUtil.getConnection();
+	         PreparedStatement pst = connection.prepareStatement("SELECT * FROM car_list WHERE car_number = ?");) {
 
-		boolean match = false;
-		int count = 0;
-		Connection connection = null;
-		ResultSet resultSet = null;
-		PreparedStatement pst = null;
+	        pst.setString(1, Carno);
+	        try (ResultSet resultSet = pst.executeQuery()) {
+	            while (resultSet.next()) {
+	                String num1 = resultSet.getString("car_number");
+	                System.out.println("carno: " + num1);
+	                if (Carno.toLowerCase().trim().equals(num1)) {
+	                    count++;
+	                }
+	            }
+	        }
 
-		try {
-			connection = ConnectionUtil.getConnection();
-
-			String nameExistQuery = "SELECT * FROM car_list WHERE car_number = ?";
-			pst = connection.prepareStatement(nameExistQuery);
-			pst.setString(1, Carno);
-			resultSet = pst.executeQuery();
-
-			while (resultSet.next()) {
-				String num1 = resultSet.getString("car_number");
-
-				System.out.println("carno: " + num1);
-
-				if (Carno.toLowerCase().trim().equals(num1)) {
-					count++;
-				}
-			}
-
-			if (count > 0) {
-				match = true;
-			}
-
-		} catch (SQLException e) {
-			throw new DAOException("Error: " + e);
-		} finally {
-
-			if (resultSet != null) {
-				resultSet.close();
-			}
-			if (pst != null) {
-				pst.close();
-			}
-			if (connection != null) {
-				connection.close();
-			}
-		}
-		return match;
+	        if (count > 0) {
+	            match = true;
+	        }
+	    } catch (SQLException e) {
+	        throw new DAOException("Error: " + e);
+	    }
+	    
+	    return match;
 	}
+
 
 	// Delete carlist
 
 	public boolean deleteCar(String Carno, int isDeleted) throws DAOException {
-
-		Connection connection = null;
-		PreparedStatement pst = null;
-		int rows = 0;
-
-		try {
-			connection = ConnectionUtil.getConnection();
-
-			String isDelete = Integer.toString(isDeleted);
-
-			String deleteQuery = "UPDATE car_list SET is_deleted = ? WHERE car_number = '" + Carno.toLowerCase().trim()
-					+ "';";
-			pst = connection.prepareStatement(deleteQuery);
-			pst.setString(1, isDelete);
-
-			// Execute query
-			rows = pst.executeUpdate();
-
-		} catch (SQLException e) {
-			throw new DAOException("Error while deleting car: " + e);
-		} finally {
-
-			try {
-				if (pst != null) {
-					pst.close();
-				}
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				throw new DAOException("Error while closing resources." + e);
-			}
-		}
-		// Return Successful or not
-		return (rows == 1);
+	    Connection connection = null;
+	    PreparedStatement pst = null;
+	    int rows = 0;
+	    
+	    try {
+	        connection = ConnectionUtil.getConnection();
+	        String isDelete = Integer.toString(isDeleted);
+	        String deleteQuery = "UPDATE car_list SET is_deleted = ? WHERE car_number = '" + Carno.toLowerCase().trim() + "';";
+	        pst = connection.prepareStatement(deleteQuery);
+	        pst.setString(1, isDelete);
+	        // Execute query
+	        rows = pst.executeUpdate();
+	    } catch (SQLException e) {
+	        throw new DAOException("Error while deleting car: " + e);
+	    } finally {
+	        try {
+	            if (pst != null) {
+	                pst.close();
+	            }
+	            if (connection != null) {
+	                connection.close();
+	            }
+	        } catch (SQLException e) {
+	          
+	        }
+	    }
+	    // Return Successful or not
+	    return (rows == 1);
 	}
+
 
 }
