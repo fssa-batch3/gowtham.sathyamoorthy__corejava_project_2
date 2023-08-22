@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 import com.fssa.turbotrip.model.Car;
 import com.fssa.turbotrip.validation.exception.InvalidCarException;
-
+ 
 public class CarValidator {
 
 	public static boolean validateCar(Car car) throws InvalidCarException {
@@ -63,7 +63,7 @@ public class CarValidator {
 		if (registration == null)
 			return false;
 
-		String pattern_string = "[A-Z]{2} \\d{2} [A-Z]{2} \\d{4}";
+		String pattern_string = "[A-Z]{2}+ \\d{2} +[A-Z]{2}+ \\d{4}";
 		match = Pattern.matches(pattern_string, registration);
 
 		if (match) {
