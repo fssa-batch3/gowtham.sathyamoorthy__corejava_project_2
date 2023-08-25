@@ -1,7 +1,10 @@
 package com.fssa.turbotrip;
+import java.util.logging.Logger;
 
 public class App {
-	public static void main(String[] args) {
-		System.out.println("Welcome to TurboTrip!");
-	}
+    private static final Logger LOGGER = Logger.getLogger(App.class.getName());
+
+    public static void main(String[] args) {
+        LOGGER.info("Welcome to TurboTrip!");
+    }
 }

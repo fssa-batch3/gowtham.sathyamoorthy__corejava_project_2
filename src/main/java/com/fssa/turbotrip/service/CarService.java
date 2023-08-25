@@ -1,13 +1,14 @@
 package com.fssa.turbotrip.service;
 
-import java.sql.SQLException;
+import java.sql.SQLException; 
 
 import com.fssa.turbotrip.dao.CarDAO;
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
 import com.fssa.turbotrip.service.exception.ServiceException;
 import com.fssa.turbotrip.validation.CarValidator;
-import com.fssa.turbotrip.validation.exception.InvalidUserException;
+import com.fssa.turbotrip.validation.exception.InvalidCarException;
+
 
 public class CarService {
 	public boolean createCar(Car car) throws ServiceException {
@@ -22,7 +23,7 @@ public class CarService {
 				return false;
 			}
 
-		} catch (DAOException | InvalidUserException e) {
+		} catch (DAOException | InvalidCarException e) {
 			throw new ServiceException(e);
 		}
 
@@ -30,7 +31,7 @@ public class CarService {
 
 	// list cars
 
-	public String listCar(Car car) throws ServiceException, InvalidUserException, DAOException {
+	public String listCar(Car car) throws ServiceException, InvalidCarException, DAOException {
 		CarDAO CarDAO = new CarDAO();
 		return CarDAO.readCar(car);
 	}
@@ -38,7 +39,7 @@ public class CarService {
 	//update cars
 	
 	
-	public boolean updateCar(Car car , String Carno) throws ServiceException, InvalidUserException, DAOException {
+	public boolean updateCar(Car car , String Carno) throws ServiceException, InvalidCarException, DAOException {
 		CarDAO carDAO = new CarDAO();
 		try {
 			if(CarValidator.validateupdateCar(car)) {
@@ -54,7 +55,7 @@ public class CarService {
 				return false;
 			}
 
-		} catch (DAOException | InvalidUserException e) {
+		} catch (DAOException | InvalidCarException e) {
 			throw new ServiceException(e);
 		}
 	
@@ -64,7 +65,7 @@ public class CarService {
 		public static boolean deleteCar(String Carno, int isDeleted) throws ServiceException, DAOException {
 			CarDAO carDAO = new CarDAO();
 			try {
-				if (carDAO.sameNumberExist(Carno) ) {
+				if (carDAO.sameNumberExist(Carno)  ) {
 					if (carDAO.deleteCar(Carno, isDeleted)) {
 						System.out.println("Car " + Carno + " Successfully Deleted!");
 						return true;

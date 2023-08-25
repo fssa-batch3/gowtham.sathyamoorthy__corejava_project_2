@@ -12,7 +12,7 @@ public class User {
 	public User(String username, String email, String phone, String password, int isdeleted, boolean isdriver) {
 		super();
 		this.email = email;
-		this.username = username;
+		this.username = username; 
 		this.password = password;
 		this.phone = phone;
 		this.setIsdeleted(isdeleted);

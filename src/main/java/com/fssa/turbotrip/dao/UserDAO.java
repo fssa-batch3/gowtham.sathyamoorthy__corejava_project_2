@@ -1,16 +1,13 @@
 package com.fssa.turbotrip.dao;
 
 import java.sql.Connection;
-import com.fssa.turbotrip.utils.*;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.User;
-
-import io.github.cdimascio.dotenv.Dotenv;
+import com.fssa.turbotrip.utils.ConnectionUtil;
 
 public class UserDAO {
 	public boolean login(User user) throws SQLException {

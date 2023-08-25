@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.fssa.turbotrip.service.TestUpdateCarList
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in com.fssa.turbotrip.service.TestUpdateCarList
+testUpdateSuccess  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.Error: 
+Unresolved compilation problems: 
+	Unhandled exception type InvalidCarException
+	Unreachable catch block for InvalidUserException. This exception is never thrown from the try statement body
+
+	at com.fssa.turbotrip.service.TestUpdateCarList.testUpdateSuccess(TestUpdateCarList.java:22)
+

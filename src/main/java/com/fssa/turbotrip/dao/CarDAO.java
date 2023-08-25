@@ -11,18 +11,17 @@ import java.sql.SQLException;
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
 
-
-
 public class CarDAO {
 
 	public boolean createCar(Car car) throws DAOException {
 		final String insertQuery = "INSERT INTO car_list (car_number, car_model, car_image, car_description)VALUES (?,?,?,?)";
-		try (Connection connect = ConnectionUtil.getConnection(); PreparedStatement pst = connect.prepareStatement(insertQuery);) {
+		try (Connection connect = ConnectionUtil.getConnection();
+				PreparedStatement pst = connect.prepareStatement(insertQuery);) {
 
 			pst.setString(1, car.getCarNo().toLowerCase().trim());
 			pst.setString(2, car.getCarmodel());
 			pst.setString(3, car.getCarImage());
-			pst.setString(4, car.getDescription());  
+			pst.setString(4, car.getDescription());
 			int rows = pst.executeUpdate();
 			return (rows == 1);
 		} catch (SQLException e) {
@@ -34,7 +33,8 @@ public class CarDAO {
 		String selectQuery = "SELECT * FROM project.car_list WHERE car_number = ?";
 		ResultSet result = null;
 		StringBuilder resultBuilder = new StringBuilder();
-		try (Connection connect = ConnectionUtil.getConnection(); PreparedStatement pst = connect.prepareStatement(selectQuery)) {
+		try (Connection connect = ConnectionUtil.getConnection();
+				PreparedStatement pst = connect.prepareStatement(selectQuery)) {
 			pst.setString(1, car.getCarNo().toLowerCase().trim());
 			result = pst.executeQuery();
 
@@ -62,80 +62,79 @@ public class CarDAO {
 	// Update carlist
 
 	public static boolean updateCar(Car car, String Carno) throws DAOException {
-		String updateQuery = "UPDATE car_list SET car_image=?, car_description=?   WHERE car_number= '"
-				+ Carno.toLowerCase().trim() + "';";
-		try (Connection connect = ConnectionUtil.getConnection(); PreparedStatement pst = connect.prepareStatement(updateQuery);) {
-
-			pst.setString(1, car.getCarImage());
-			pst.setString(2, car.getDescription());
-			int rows = pst.executeUpdate();
-			return (rows == 1);
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		}
-	}
-
-	public static boolean sameNumberExist(String Carno) throws SQLException, DAOException {
-	    boolean match = false;
-	    int count = 0;
-	    
-	    try (Connection connection = ConnectionUtil.getConnection();
-	         PreparedStatement pst = connection.prepareStatement("SELECT * FROM car_list WHERE car_number = ?");) {
-
-	        pst.setString(1, Carno);
-	        try (ResultSet resultSet = pst.executeQuery()) {
-	            while (resultSet.next()) {
-	                String num1 = resultSet.getString("car_number");
-	                System.out.println("carno: " + num1);
-	                if (Carno.toLowerCase().trim().equals(num1)) {
-	                    count++;
-	                }
-	            }
-	        }
-
-	        if (count > 0) {
-	            match = true;
-	        }
+	    String updateQuery = "UPDATE car_list SET car_image=?, car_description=? WHERE car_number=?";
+	    try (Connection connect = ConnectionUtil.getConnection(); 
+	         PreparedStatement pst = connect.prepareStatement(updateQuery)) {
+	        pst.setString(1, car.getCarImage());
+	        pst.setString(2, car.getDescription());
+	        pst.setString(3, Carno.toLowerCase().trim());
+	        int rows = pst.executeUpdate();
+	        return (rows == 1);
 	    } catch (SQLException e) {
-	        throw new DAOException("Error: " + e);
+	        throw new DAOException(e);
 	    }
-	    
-	    return match;
 	}
 
+	public boolean sameNumberExist(String Carno) throws SQLException, DAOException {
+		boolean match = false;
+		int count = 0;
+
+		try (Connection connection = ConnectionUtil.getConnection();
+				PreparedStatement pst = connection.prepareStatement("SELECT * FROM car_list WHERE car_number = ?");) {
+
+			pst.setString(1, Carno);
+			try (ResultSet resultSet = pst.executeQuery()) {
+				while (resultSet.next()) {
+					String num1 = resultSet.getString("car_number");
+					System.out.println("carno: " + num1);
+					if (Carno.toLowerCase().trim().equals(num1)) {
+						count++;
+					}
+				}
+			}
+
+			if (count > 0) {
+				match = true;
+			}
+		} catch (SQLException e) {
+			throw new DAOException("Error: " + e);
+		}
+
+		return match;
+	}
 
 	// Delete carlist
 
 	public boolean deleteCar(String Carno, int isDeleted) throws DAOException {
-	    Connection connection = null;
-	    PreparedStatement pst = null;
-	    int rows = 0;
-	    
-	    try {
-	        connection = ConnectionUtil.getConnection();
-	        String isDelete = Integer.toString(isDeleted);
-	        String deleteQuery = "UPDATE car_list SET is_deleted = ? WHERE car_number = '" + Carno.toLowerCase().trim() + "';";
-	        pst = connection.prepareStatement(deleteQuery);
-	        pst.setString(1, isDelete);
-	        // Execute query
-	        rows = pst.executeUpdate();
-	    } catch (SQLException e) {
-	        throw new DAOException("Error while deleting car: " + e);
-	    } finally {
-	        try {
-	            if (pst != null) {
-	                pst.close();
-	            }
-	            if (connection != null) {
-	                connection.close();
-	            }
-	        } catch (SQLException e) {
-	          
-	        }
-	    }
-	    // Return Successful or not
-	    return (rows == 1);
-	}
+		Connection connection = null;
+		PreparedStatement pst = null;
+		int rows = 0;
 
+		try {
+			connection = ConnectionUtil.getConnection();
+			String isDelete = Integer.toString(isDeleted);
+			String deleteQuery = "UPDATE car_list SET is_deleted = ? WHERE car_number = '" + Carno.toLowerCase().trim()
+					+ "';";
+			pst = connection.prepareStatement(deleteQuery);
+			pst.setString(1, isDelete);
+			// Execute query
+			rows = pst.executeUpdate();
+		} catch (SQLException e) {
+			throw new DAOException("Error while deleting car: " + e);
+		} finally {
+			try {
+				if (pst != null) {
+					pst.close();
+				}
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+
+			}
+		}
+		// Return Successful or not
+		return (rows == 1);
+	}
 
 }

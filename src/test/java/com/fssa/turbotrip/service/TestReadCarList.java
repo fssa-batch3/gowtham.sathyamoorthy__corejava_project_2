@@ -11,11 +11,12 @@ import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
 import com.fssa.turbotrip.service.CarService;
 import com.fssa.turbotrip.service.exception.ServiceException;
+import com.fssa.turbotrip.validation.exception.InvalidCarException;
 import com.fssa.turbotrip.validation.exception.InvalidUserException;
 
 public class TestReadCarList {
 	
-	public static void main(String[] args) throws ServiceException, InvalidUserException, DAOException {
+	public static void main(String[] args) throws ServiceException, InvalidCarException, DAOException {
 		
 		Car car1 = new Car("TN 08 CD 0099");
 		CarDAO c = new CarDAO();
@@ -24,7 +25,7 @@ public class TestReadCarList {
 	}
 	
 	@Test
-	public void testUpdateSuccess() throws ServiceException, InvalidUserException, DAOException {
+	public void testUpdateSuccess() throws ServiceException, InvalidCarException, DAOException {
 		CarService carService = new CarService();
 		Car car1 = new Car("TN 07 CD 1234");
 		String s = carService.listCar(car1);
@@ -36,7 +37,7 @@ public class TestReadCarList {
 	
 	
 	@Test
-	public void testUpdateFail() throws ServiceException, InvalidUserException, DAOException {
+	public void testUpdateFail() throws ServiceException, InvalidCarException, DAOException {
 		CarService carService = new CarService();
 		Car car1 = new Car("TN 08 CD 1234");
 		String s = carService.listCar(car1);
