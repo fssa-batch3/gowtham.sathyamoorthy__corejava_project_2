@@ -1,5 +1,7 @@
 package com.fssa.turbotrip.service;
 
+import java.util.List;
+
 import com.fssa.turbotrip.dao.UserDAO;
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.User;
@@ -45,6 +47,20 @@ public class UserService {
 			throw new ServiceException(e.getLocalizedMessage());
 		}
 
+	}
+	
+	/**
+	 * 
+	 * @return
+	 * @throws ServiceException
+	 */
+	public List<User> getAllUserLists() throws ServiceException{
+		try {
+			UserDAO userDAO = new UserDAO();
+			return userDAO.getAllUsers();
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
 	}
 
 }

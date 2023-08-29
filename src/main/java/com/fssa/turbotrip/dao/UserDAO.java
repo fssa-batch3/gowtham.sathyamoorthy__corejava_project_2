@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.User;
@@ -43,6 +46,35 @@ public class UserDAO {
 			throw new DAOException(e);
 		}
 
+	}
+	
+//	get all users list
+	/**
+	 * 
+	 * @return
+	 * @throws DAOException
+	 */
+	public List<User> getAllUsers() throws DAOException{
+		final String  selectUserListQuery = "SELECT * FROM user";
+		List<User> users = new ArrayList<>();
+		try (Connection connect = ConnectionUtil.getConnection();
+				Statement statement = connect.createStatement();
+				ResultSet rs = statement.executeQuery(selectUserListQuery)){
+			while(rs.next()) {
+				int userId = rs.getInt("user_id");
+				String username = rs.getString("username");
+				String email = rs.getString("email");
+				String phone = rs.getString("phone");
+				String password = rs.getString("password");
+				int is_deleted = rs.getInt("is_deleted");
+				boolean is_driver = rs.getBoolean("is_driver");
+				User user = new User(userId,username,email,phone,password,is_deleted,is_driver);
+				users.add(user);
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+		return users;
 	}
 
 	public static void main(String[] args) throws DAOException {
