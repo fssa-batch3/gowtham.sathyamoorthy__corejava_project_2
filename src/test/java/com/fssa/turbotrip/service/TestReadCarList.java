@@ -15,7 +15,10 @@ import com.fssa.turbotrip.validation.exception.InvalidCarException;
 import com.fssa.turbotrip.validation.exception.InvalidUserException;
 
 public class TestReadCarList {
-	
+	/**
+	 * Test class for evaluating the functionality of listing cars using the CarService.
+	 */
+
 	public static void main(String[] args) throws ServiceException, InvalidCarException, DAOException {
 		
 		Car car1 = new Car("TN 08 CD 0099");

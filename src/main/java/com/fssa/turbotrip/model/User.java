@@ -10,7 +10,6 @@ public class User {
 	private boolean isdriver;
 
 	public User(String username, String email, String phone, String password, int isdeleted, boolean isdriver) {
-		super();
 		this.email = email;
 		this.username = username; 
 		this.password = password;
@@ -19,6 +18,7 @@ public class User {
 		this.setIsdriver(isdriver);
 		
 	}
+	// This is getters and setters for UserModel
 
 	public String getPhone() {
 		return phone;

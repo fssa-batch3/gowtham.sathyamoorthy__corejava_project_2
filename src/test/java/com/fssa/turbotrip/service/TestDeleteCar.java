@@ -1,5 +1,9 @@
 package com.fssa.turbotrip.service;
 
+/**
+ * Test class for verifying the deletion functionality of the CarService.
+ */
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -13,8 +17,6 @@ import com.fssa.turbotrip.service.exception.ServiceException;
 
 public class TestDeleteCar {
 
-
-	
 	@Test
 	void TestDeleteCarSuccess() {
 		String Carno = "tn 08 cd 0066";
@@ -40,12 +42,4 @@ public class TestDeleteCar {
 		}
 	}
 
-
-
-
-
-
-
 }
-	
-

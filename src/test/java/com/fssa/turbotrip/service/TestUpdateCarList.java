@@ -11,6 +11,9 @@ import com.fssa.turbotrip.service.CarService;
 import com.fssa.turbotrip.service.exception.ServiceException;
 import com.fssa.turbotrip.validation.exception.InvalidCarException;
 
+/**
+ * Test class for evaluating the update functionality of the CarService.
+ */
 
 public class TestUpdateCarList {
 

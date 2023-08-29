@@ -12,16 +12,16 @@ import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
 
 public class CarDAO {
-
+// This is Attaching new car in the CarList
 	public boolean createCar(Car car) throws DAOException {
-		final String insertQuery = "INSERT INTO car_list (car_number, car_model, car_image, car_description)VALUES (?,?,?,?)";
+		final String insertQuery = "INSERT INTO car_list (driver_id, car_number, car_model, car_image, car_description)VALUES (?,?,?,?,?)";
 		try (Connection connect = ConnectionUtil.getConnection();
 				PreparedStatement pst = connect.prepareStatement(insertQuery);) {
-
-			pst.setString(1, car.getCarNo().toLowerCase().trim());
-			pst.setString(2, car.getCarmodel());
-			pst.setString(3, car.getCarImage());
-			pst.setString(4, car.getDescription());
+			pst.setInt(1, car.getUserId());
+			pst.setString(2, car.getCarNo().toLowerCase().trim());
+			pst.setString(3, car.getCarmodel());
+			pst.setString(4, car.getCarImage());
+			pst.setString(5, car.getDescription());
 			int rows = pst.executeUpdate();
 			return (rows == 1);
 		} catch (SQLException e) {
@@ -29,6 +29,7 @@ public class CarDAO {
 		}
 	}
 
+// This is read CarList code
 	public String readCar(Car car) throws DAOException {
 		String selectQuery = "SELECT * FROM project.car_list WHERE car_number = ?";
 		ResultSet result = null;
@@ -59,20 +60,20 @@ public class CarDAO {
 		}
 	}
 
-	// Update carlist
+	// This is Update the Car details in carList
 
 	public static boolean updateCar(Car car, String Carno) throws DAOException {
-	    String updateQuery = "UPDATE car_list SET car_image=?, car_description=? WHERE car_number=?";
-	    try (Connection connect = ConnectionUtil.getConnection(); 
-	         PreparedStatement pst = connect.prepareStatement(updateQuery)) {
-	        pst.setString(1, car.getCarImage());
-	        pst.setString(2, car.getDescription());
-	        pst.setString(3, Carno.toLowerCase().trim());
-	        int rows = pst.executeUpdate();
-	        return (rows == 1);
-	    } catch (SQLException e) {
-	        throw new DAOException(e);
-	    }
+		String updateQuery = "UPDATE car_list SET car_image=?, car_description=? WHERE car_number=?";
+		try (Connection connect = ConnectionUtil.getConnection();
+				PreparedStatement pst = connect.prepareStatement(updateQuery)) {
+			pst.setString(1, car.getCarImage());
+			pst.setString(2, car.getDescription());
+			pst.setString(3, Carno.toLowerCase().trim());
+			int rows = pst.executeUpdate();
+			return (rows == 1);
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
 	}
 
 	public boolean sameNumberExist(String Carno) throws SQLException, DAOException {
@@ -103,7 +104,7 @@ public class CarDAO {
 		return match;
 	}
 
-	// Delete carlist
+	// This is Delete the car details in the CarList
 
 	public boolean deleteCar(String Carno, int isDeleted) throws DAOException {
 		Connection connection = null;

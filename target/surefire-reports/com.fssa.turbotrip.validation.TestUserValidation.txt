@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.fssa.turbotrip.validation.TestUserValidation
--------------------------------------------------------------------------------
-Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in com.fssa.turbotrip.validation.TestUserValidation

@@ -10,6 +10,7 @@ import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.utils.ConnectionUtil;
 
 public class UserDAO {
+	// this code is checking the login user from the User table
 	public boolean login(User user) throws SQLException {
 		try (Connection connection = ConnectionUtil.getConnection()) {
 			String query = "SELECT * FROM user WHERE email = ? AND PASSWORD = ?";
@@ -24,6 +25,7 @@ public class UserDAO {
 		}
 	}
 
+	// This code create new User to the website
 	public boolean createUser(User user) throws DAOException {
 		final String insertQuery = "INSERT INTO user(username, email, phone, password, is_deleted, is_driver)VALUES (?,?,?,?,?,?)";
 		try (Connection connect = ConnectionUtil.getConnection();
@@ -40,6 +42,11 @@ public class UserDAO {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
+
+	}
+
+	public static void main(String[] args) throws DAOException {
+		User use = new User("Krishna", "gowtham.krish1705@gmail.com", "9551555232", "Gowthi@123", 0, false);
 
 	}
 

@@ -6,7 +6,7 @@ import com.fssa.turbotrip.model.Driver;
 import com.fssa.turbotrip.service.exception.ServiceException;
 import com.fssa.turbotrip.validation.DriverValidation;
 import com.fssa.turbotrip.validation.exception.InvalidDriverException;
-
+// This code is checking the validation of Register driver
 public class DriverService {
 	public boolean registerUser(Driver driver) throws ServiceException, InvalidDriverException {
 		DriverDAO driverDAO = new DriverDAO();

@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import com.fssa.turbotrip.model.*;
 import com.fssa.turbotrip.service.UserService;
 import com.fssa.turbotrip.service.exception.ServiceException;
+/**
+ * Test class for evaluating the login functionality of the UserService.
+ */
 
 public class TestLoginFeature {
 	@Test

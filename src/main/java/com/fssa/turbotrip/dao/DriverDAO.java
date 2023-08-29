@@ -3,13 +3,13 @@ package com.fssa.turbotrip.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Driver;
 import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.utils.ConnectionUtil;
 
 public class DriverDAO {
+	// This code is Create new Driver details in Driver table
 	public boolean createDriver(Driver driver) throws DAOException {
 		final String insertQuery = "INSERT INTO driver(aadhar_number, licensence_number, experience )VALUES (?,?,?)";
 		try (Connection connect = ConnectionUtil.getConnection();

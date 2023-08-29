@@ -9,6 +9,9 @@ import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.service.UserService;
 import com.fssa.turbotrip.service.exception.ServiceException;
 
+/**
+ * Test class for evaluating the registration functionality of the UserService.
+ */
 
 public class TestRegisterFeature{
 	

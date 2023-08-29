@@ -1,11 +1,14 @@
- package com.fssa.turbotrip.service;
+package com.fssa.turbotrip.service;
+
 import com.fssa.turbotrip.dao.UserDAO;
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.service.exception.ServiceException;
 import com.fssa.turbotrip.validation.UserValidator;
 import com.fssa.turbotrip.validation.exception.InvalidUserException;
+
 public class UserService {
+	// This code is checking the validation in register user
 	public boolean registerUser(User user) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
 		try {
@@ -18,32 +21,30 @@ public class UserService {
 				return false;
 			}
 
-		} catch (DAOException | InvalidUserException e) { 
+		} catch (DAOException | InvalidUserException e) {
 			throw new ServiceException(e);
 		}
-		
-		}
-		public boolean loginUser(User user) throws ServiceException {
-
-			try {
-				UserValidator.validateEmail(user.getEmail());
-				UserValidator.validatePassword(user.getPassword());
-
-				UserDAO userDAO = new UserDAO();
-				if (userDAO.login(user)) {
-					System.out.println(user.getEmail() + " Successfully logged in");
-					return true;
-				} else {
-					return false;
-				}
-			} catch (Exception e) {
-				throw new ServiceException(e.getLocalizedMessage());
-			}
-
-		
 
 	}
 
-	
-	
+	// This code is checking the validation in Login user
+	public boolean loginUser(User user) throws ServiceException {
+
+		try {
+			UserValidator.validateEmail(user.getEmail());
+			UserValidator.validatePassword(user.getPassword());
+
+			UserDAO userDAO = new UserDAO();
+			if (userDAO.login(user)) {
+				System.out.println(user.getEmail() + " Successfully logged in");
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			throw new ServiceException(e.getLocalizedMessage());
+		}
+
+	}
+
 }

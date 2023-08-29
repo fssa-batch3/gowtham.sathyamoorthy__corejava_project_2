@@ -1,25 +1,25 @@
- package com.fssa.turbotrip.validation;
+package com.fssa.turbotrip.validation;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 
 import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.validation.exception.InvalidUserException;
 
+// This code for validating the given inputs or valid or not!!!
+
 public class UserValidator {
 	public static boolean validateUser(User user) throws InvalidUserException {
-		
-		
+
 		if (user != null && validateName(user.getUsername()) && validatePassword(user.getPassword())
-				&& validateEmail(user.getEmail())
-				&&  validatePhone(user.getPhone())) {
+				&& validateEmail(user.getEmail()) && validatePhone(user.getPhone())) {
 			return true;
 		} else {
 			throw new InvalidUserException("User details not valid");
 		}
 
 	}
-
+	// This code is validating the valid UserName to store data in User table
 	public static boolean validateName(String name) {
 		boolean match = false;
 
@@ -38,6 +38,7 @@ public class UserValidator {
 
 		return match;
 	}
+	// This code is validating the valid UserPassword to store data in User table
 
 	public static boolean validatePassword(String password) {
 		boolean match = false;
@@ -57,6 +58,7 @@ public class UserValidator {
 
 		return match;
 	}
+	// This code is validating the valid UserEmail to store data in User table
 
 	public static boolean validateEmail(String email) {
 		boolean isMatch = false;
@@ -73,6 +75,8 @@ public class UserValidator {
 		return isMatch;
 
 	}
+	// This code is validating the valid UserPhonenumber to store data in User table
+
 	public static boolean validatePhone(String phone) {
 		boolean isMatch = false;
 		if (phone == null)
@@ -89,4 +93,3 @@ public class UserValidator {
 
 	}
 }
-

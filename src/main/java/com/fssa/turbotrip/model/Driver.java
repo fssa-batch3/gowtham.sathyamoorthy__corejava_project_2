@@ -13,13 +13,13 @@ public void setId(int id) {
 	this.id = id;
 }
 
-	public Driver (long aadhar_number, String licensence_number, int experience, int id ) {
+	public Driver (long aadhar_number, String licensence_number, int experience ) {
 		super();
 		this.aadhar_number = aadhar_number;
 		this.licensence_number = licensence_number;
 		this.experience = experience;
-		this.id=id;
 }
+	// This is getters and setters for DriverModel
 
 	public long getAadhar_number() {
 		return aadhar_number;

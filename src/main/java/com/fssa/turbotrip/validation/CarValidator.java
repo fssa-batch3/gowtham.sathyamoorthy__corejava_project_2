@@ -6,14 +6,14 @@ import com.fssa.turbotrip.model.Car;
 import com.fssa.turbotrip.validation.exception.InvalidCarException;
  
 public class CarValidator {
-
+// This code for validating the given inputs or valid or not!!!
 	public static boolean validateCar(Car car) throws InvalidCarException {
 
 		if (car != null && validateURL(car.getCarImage()) && validateModel(car.getCarmodel())
 				&& validateRegistration(car.getCarNo()) && validateDescription(car.getDescription())) {
 			return true;
 		} else {
-			throw new InvalidCarException("User details not valid");
+			throw new InvalidCarException("The giver car details not valid");
 		}
 
 	}
@@ -23,19 +23,19 @@ public class CarValidator {
 		if (car != null && validateURL(car.getCarImage()) && validateDescription(car.getDescription())) {
 			return true;
 		} else {
-			throw new InvalidCarException("User details not valid");
+			throw new InvalidCarException("The giver car details not valid");
 		}
 
 	}
-
+// This code is validating the image URL to store data in CarList
 	public static boolean validateURL(String imageUrl) throws InvalidCarException {
 		if (imageUrl == null || imageUrl.isEmpty()) {
 			throw new InvalidCarException("The image url is null or empty please correct it");
 		} else {
 			return true;
 		}
-//		
-//		
+		// This code is validating the Car Model to store data in CarList
+		
 	}
 
 	public static boolean validateModel(String model) {
@@ -56,7 +56,7 @@ public class CarValidator {
 
 		return match;
 	}
-
+	// This code is validating the Car registration  to store data in CarList
 	public static boolean validateRegistration(String registration) {
 		boolean match = false;
 
@@ -75,7 +75,7 @@ public class CarValidator {
 
 		return match;
 	}
-
+	// This code is validating the Car Description to store data in CarList
 	public static boolean validateDescription(String description) {
 		boolean match = false;
 

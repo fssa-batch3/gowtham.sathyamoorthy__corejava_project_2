@@ -1,6 +1,6 @@
 package com.fssa.turbotrip.service;
 
-import java.sql.SQLException; 
+import java.sql.SQLException;
 
 import com.fssa.turbotrip.dao.CarDAO;
 import com.fssa.turbotrip.dao.exception.DAOException;
@@ -9,7 +9,7 @@ import com.fssa.turbotrip.service.exception.ServiceException;
 import com.fssa.turbotrip.validation.CarValidator;
 import com.fssa.turbotrip.validation.exception.InvalidCarException;
 
-
+// This code is checking all the validation or matched to the given input or not !
 public class CarService {
 	public boolean createCar(Car car) throws ServiceException {
 		CarDAO carDAO = new CarDAO();
@@ -29,27 +29,26 @@ public class CarService {
 
 	}
 
-	// list cars
+	// this code is checking the list cars to read cars
 
 	public String listCar(Car car) throws ServiceException, InvalidCarException, DAOException {
 		CarDAO CarDAO = new CarDAO();
 		return CarDAO.readCar(car);
 	}
- 
-	//update cars
-	
-	
-	public boolean updateCar(Car car , String Carno) throws ServiceException, InvalidCarException, DAOException {
+
+	// this code is checking the update cars from the CarList
+
+	public boolean updateCar(Car car, String Carno) throws ServiceException, InvalidCarException, DAOException {
 		CarDAO carDAO = new CarDAO();
 		try {
-			if(CarValidator.validateupdateCar(car)) {
-			if (CarDAO.updateCar(car,Carno)) {
-				System.out.println(Carno + " Successfully Your Car updated!");
-				return true;
-			} else {
-				System.out.println("not successfully updated");
-				return false;
-			}
+			if (CarValidator.validateupdateCar(car)) {
+				if (CarDAO.updateCar(car, Carno)) {
+					System.out.println(Carno + " Successfully Your Car updated!");
+					return true;
+				} else {
+					System.out.println("not successfully updated");
+					return false;
+				}
 			} else {
 				System.out.println("not successfully updated");
 				return false;
@@ -58,27 +57,26 @@ public class CarService {
 		} catch (DAOException | InvalidCarException e) {
 			throw new ServiceException(e);
 		}
-	
+
 	}
-	
-	// delete course
-		public static boolean deleteCar(String Carno, int isDeleted) throws ServiceException, DAOException {
-			CarDAO carDAO = new CarDAO();
-			try {
-				if (carDAO.sameNumberExist(Carno)  ) {
-					if (carDAO.deleteCar(Carno, isDeleted)) {
-						System.out.println("Car " + Carno + " Successfully Deleted!");
-						return true;
-					} else {
-						return false;
-					}
+
+	// this code is checking the delete cars from the CarList
+	public static boolean deleteCar(String Carno, int isDeleted) throws ServiceException, DAOException {
+		CarDAO carDAO = new CarDAO();
+		try {
+			if (carDAO.sameNumberExist(Carno)) {
+				if (carDAO.deleteCar(Carno, isDeleted)) {
+					System.out.println("Car " + Carno + " Successfully Deleted!");
+					return true;
 				} else {
-					System.out.println("this car doesn't here!");
 					return false;
 				}
-			} catch (SQLException e) {
-				throw new ServiceException(e);
+			} else {
+				System.out.println("this car doesn't here!");
+				return false;
 			}
+		} catch (SQLException e) {
+			throw new ServiceException(e);
 		}
-} 
-	
+	}
+}
