@@ -48,7 +48,7 @@ public class DriverValidation {
 		if (licensence_number == null)
 			return false;
 
-		String regex = "^[A-Z]{2}[0-9]{13}$";
+		String regex = "^[A-Z]{2}\\d{13}$";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(licensence_number);
 		match = m.matches();
@@ -69,7 +69,8 @@ public class DriverValidation {
 		if (exp == null)
 			return false;
 
-		String regex = "^[1-9][0-9]*$";
+		String regex = "^[1-9]\\d*$";
+;
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(exp);
 		match = m.matches();

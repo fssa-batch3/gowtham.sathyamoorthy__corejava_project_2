@@ -77,9 +77,8 @@ public class UserDAO {
 		return users;
 	}
 
-	public static void main(String[] args) throws DAOException {
-		User use = new User("Krishna", "gowtham.krish1705@gmail.com", "9551555232", "Gowthi@123", 0, false);
-
+	public static void main(String[] args) {
+	    User users = new User("Krishna", "gowtham.krish1705@gmail.com", "9551555232", "Gowthi@123", 0, false);
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.fssa.turbotrip.dao;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
-import com.fssa.turbotrip.model.User;
+
 import com.fssa.turbotrip.utils.ConnectionUtil;
 
 public class CarDAO {
