@@ -1,6 +1,7 @@
 package com.fssa.turbotrip.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.fssa.turbotrip.dao.CarDAO;
 import com.fssa.turbotrip.dao.exception.DAOException;
@@ -78,5 +79,16 @@ public class CarService {
 		} catch (SQLException e) {
 			throw new ServiceException(e);
 		}
+	}
+
+	public List<Car> getAllCarlists() throws ServiceException {
+		try {
+			CarDAO carDAO = new CarDAO();
+			return carDAO.getAllCars();
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+
+		}
+
 	}
 }

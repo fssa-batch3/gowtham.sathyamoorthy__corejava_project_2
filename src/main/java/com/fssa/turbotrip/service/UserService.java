@@ -48,13 +48,13 @@ public class UserService {
 		}
 
 	}
-	
+
 	/**
 	 * 
 	 * @return
 	 * @throws ServiceException
 	 */
-	public List<User> getAllUserLists() throws ServiceException{
+	public List<User> getAllUserLists() throws ServiceException {
 		try {
 			UserDAO userDAO = new UserDAO();
 			return userDAO.getAllUsers();

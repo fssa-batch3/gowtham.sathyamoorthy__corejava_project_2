@@ -13,8 +13,9 @@ public void setId(int id) {
 	this.id = id;
 }
 
-	public Driver (long aadhar_number, String licensence_number, int experience ) {
+	public Driver (int id, long aadhar_number, String licensence_number, int experience ) {
 		super();
+		this.id = id;
 		this.aadhar_number = aadhar_number;
 		this.licensence_number = licensence_number;
 		this.experience = experience;

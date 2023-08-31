@@ -27,7 +27,7 @@ public class TestAttachcar {
 
 	@Test
 
-	public void testCarAdded() {
+	 void testCarAdded() {
 		CarService carService = new CarService();
 		Car car = new Car(1, "TN 08 CD 0099", "Car",
 				"https://media.istockphoto.com/id/495605964/photo/generic-compact-red-car.jpg?s=612x612&w=0&k=20&c=eElEDukSWi6HsUPXflSebpUm7j9tPNq7WvFOGIlqgeA=",

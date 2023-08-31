@@ -1,20 +1,22 @@
 package com.fssa.turbotrip.dao;
 
 import java.sql.Connection;
-
-import com.fssa.turbotrip.utils.ConnectionUtil;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
+import com.fssa.turbotrip.model.User;
+import com.fssa.turbotrip.utils.ConnectionUtil;
 
 public class CarDAO {
 // This is Attaching new car in the CarList
 	public boolean createCar(Car car) throws DAOException {
-		final String insertQuery = "INSERT INTO car_list (driver_id, car_number, car_model, car_image, car_description)VALUES (?,?,?,?,?)";
+		final String insertQuery = "INSERT INTO car_list (driver_id, car_number, car_model, car_image, car_description) VALUES (?,?,?,?,?)";
 		try (Connection connect = ConnectionUtil.getConnection();
 				PreparedStatement pst = connect.prepareStatement(insertQuery);) {
 			pst.setInt(1, car.getUserId());
@@ -138,4 +140,38 @@ public class CarDAO {
 		return (rows == 1);
 	}
 
+	/**
+	 *
+	 *
+	 *@return
+	 *@throws DAOException
+	*/
+	public List<Car> getAllCars() throws DAOException{
+		final String selectCarListQuery ="SELECT * FROM car_list";
+		List<Car> cars = new ArrayList<>();
+		try (Connection connect = ConnectionUtil.getConnection();
+				Statement statement = connect.createStatement();
+				ResultSet rs = statement.executeQuery(selectCarListQuery)){
+			while(rs.next()) {
+				int carId = rs.getInt("car_id");
+				String CarNo = rs.getString("car_number");
+				String Carmodel = rs.getString("car_model");
+				String CarImage = rs.getString("car_image");
+				String Description = rs.getString("car_description");
+				 
+				Car car = new Car(carId,CarNo,Carmodel,CarImage,Description);
+				cars.add(car);
+				
+			}
+		}
+			
+catch (SQLException e) {
+	throw new DAOException(e);
+}
+return cars;
+}
+	public static void main(String[] args) throws DAOException {
+		Car car = new Car(1,"tn 08 cd 0099", "Car", "https://media.istockphoto.com/id/495605964/photo/generic-compact-red-car.jpg?s=612x612&w=0&k=20&c=eElEDukSWi6HsUPXflSebpUm7j9tPNq7WvFOGIlqgeA=", "it is five seater ");
+		
+	}
 }

@@ -44,11 +44,10 @@ public class CarValidator {
 		if (model == null)
 			return false;
 
-		String pattern_string = "^[A-Za-z]\\w{2,29}$";
+		String pattern_string = "^[A-Za-z]{3,29}$";
 		match = Pattern.matches(pattern_string, model);
 
 		if (match) {
-
 			System.out.println("Valid Car Model.");
 		} else {
 			System.out.println("Invalid Car Model.");

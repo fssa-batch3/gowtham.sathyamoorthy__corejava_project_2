@@ -11,7 +11,7 @@ import com.fssa.turbotrip.model.User;
 public class TestRegiterDriverFeature {
 	public static void main(String[] args) {
 		
-		Driver user2 = new Driver( 294457655678L, "AB1234567890987", 2);
+		Driver user2 = new Driver(1, 294457655678L, "AB1234567890987", 2);
 		//	public Driver (long aadhar_number, String licensence_number, int experience, int id ) {
 
 			DriverService driverService = new DriverService();
@@ -25,7 +25,7 @@ public class TestRegiterDriverFeature {
 			
 		
 
-		 User user1 = new User( "AjaiKumar","ajaikumar@gmail.com","9551555231", "Ajai@12345",0, true);
+		 User user1 = new User(1, "Kumar","kumar@gmail.com","9094923527", "Kumar@12345",0, true);
 			UserService userService = new UserService();
 
 			try {

@@ -9,7 +9,21 @@ public class Car {
 				+ ", getCarNo()=" + getCarNo() + ", getDescription()=" + getDescription() + ", getClass()=" + getClass()
 				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
+	private int car_id;
+	/**
+	 * @return the user_id
+	 */
+	public int getUser_id() {
+		return car_id;
+	}
 
+
+	/**
+	 * @param user_id the user_id to set
+	 */
+	public void setUser_id(int user_id) {
+		this.car_id = car_id;
+	}
 	private String carmodel;
 	private String carImage;
 	private String carNo;
