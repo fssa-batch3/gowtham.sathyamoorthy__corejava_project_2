@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import com.fssa.turbotrip.validation.exception.InvalidCarException;
-public class TestCarValidation {
+ class TestCarValidation {
 // This is test case for CarDescription is valid or not
 	@Test
 	 void testValidCarDescription() throws InvalidCarException {

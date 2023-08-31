@@ -14,7 +14,7 @@ import com.fssa.turbotrip.dao.exception.DAOException;
 
 import com.fssa.turbotrip.service.exception.ServiceException;
 
- public class TestDeleteCar {
+  class TestDeleteCar {
 
 	@Test
 	void TestDeleteCarSuccess() {

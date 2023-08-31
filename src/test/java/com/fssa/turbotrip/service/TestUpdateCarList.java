@@ -14,7 +14,7 @@ import com.fssa.turbotrip.validation.exception.InvalidCarException;
  * Test class for evaluating the update functionality of the CarService.
  */
 
-public class TestUpdateCarList {
+ class TestUpdateCarList {
 
 	@Test
 	void testUpdateSuccess() throws ServiceException, InvalidCarException, DAOException {

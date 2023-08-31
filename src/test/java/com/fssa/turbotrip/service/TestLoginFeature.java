@@ -11,7 +11,7 @@ import com.fssa.turbotrip.service.exception.ServiceException;
  * Test class for evaluating the login functionality of the UserService.
  */
 
-public class TestLoginFeature {
+ class TestLoginFeature {
 	@Test
 
 	 void loginSuccess() {
