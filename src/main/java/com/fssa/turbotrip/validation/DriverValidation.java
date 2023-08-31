@@ -70,7 +70,7 @@ public class DriverValidation {
 			return false;
 
 		String regex = "^[1-9]\\d*$";
-;
+
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(exp);
 		match = m.matches();

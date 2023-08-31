@@ -25,7 +25,7 @@ public class TestRegiterDriverFeature {
 			
 		
 
-		 User user1 = new User(1, "Kumar","kumar@gmail.com","9094923527", "Kumar@12345",0, true);
+		 User user1 = new User(1, "Arunkumar","kumar@gmail.com","9840634596", "Kumar@12345",0, true);
 			UserService userService = new UserService();
 
 			try {
