@@ -21,7 +21,10 @@ public class Car {
 	/**
 	 * @param user_id the user_id to set
 	 */
-	public void setUser_id(int user_id) {
+//	public void setUser_id(int user_id) {
+//		this.car_id = car_id;
+//	}
+	public void setCar_id(int car_id) {
 		this.car_id = car_id;
 	}
 	private String carmodel;

@@ -38,7 +38,7 @@ public class TestCarValidation {
 	}
 	
 	
-	// This is test case for Carmodel is valid or not
+	// This is test case for CarModel is valid or not
 	
 	@Test
 	public void testValidModelName() {
