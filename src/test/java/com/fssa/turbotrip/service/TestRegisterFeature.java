@@ -32,7 +32,7 @@ public class TestRegisterFeature{
 	
 	@Test 
 
-	public void testRegistrationSuccess() {
+	 void testRegistrationSuccess() {
 		UserService userService = new UserService();
 		User user = new User("Krishna","gowtham.krish1705@gmail.com","9551555232","Gowthi@123", 0 , false);
 		try {

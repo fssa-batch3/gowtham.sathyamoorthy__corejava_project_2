@@ -8,19 +8,19 @@ import com.fssa.turbotrip.validation.exception.InvalidCarException;
 public class TestCarValidation {
 // This is test case for CarDescription is valid or not
 	@Test
-	public void testValidCarDescription() throws InvalidCarException {
+	 void testValidCarDescription() throws InvalidCarException {
 		assertTrue(CarValidator.validateDescription("It is seven seater car"));
 	}
 
 	@Test
-	public void testInvalidCarDescription() throws InvalidCarException {
+	 void testInvalidCarDescription() throws InvalidCarException {
 		assertFalse(CarValidator.validateDescription("it@100 seater car"));
 	}
 	
 	// This is test case for CarImage is valid or not
 	
 	@Test
-	public void testValidImgUrl() {
+	 void testValidImgUrl() {
 		try {
 			assertTrue(CarValidator.validateURL("https://media.istockphoto.com/id/949409516/photo/3d-illustration-of-generic-suv-car-on-white.webp?b=1&s=170667a&w=0&k=20&c=2LtfCnq1xTffaHP6b3MD8cKqJT7Z4ZiE-eHIQtbe4gw="));
 		} catch (InvalidCarException e) {
@@ -29,7 +29,7 @@ public class TestCarValidation {
 	}
 
 	@Test
-	public void testInvalidImgUrl() {
+	 void testInvalidImgUrl() {
 		try {
 			assertFalse(CarValidator.validateURL(null));
 		} catch (InvalidCarException e) {
@@ -41,13 +41,13 @@ public class TestCarValidation {
 	// This is test case for CarModel is valid or not
 	
 	@Test
-	public void testValidModelName() {
+	 void testValidModelName() {
 		assertTrue(CarValidator.validateModel("Sedan"));
 
 	}
 
 	@Test
-	public void testMismatchModelName() {
+	 void testMismatchModelName() {
 		assertFalse(CarValidator.validateModel("@fwffefe"));
 
 	}
@@ -55,13 +55,13 @@ public class TestCarValidation {
 	// This is test case for CarDescription is valid or not:
 
 	@Test
-	public void testValidRegistration() {
+	 void testValidRegistration() {
 		assertTrue(CarValidator.validateRegistration("AB 12 CD 2023"));
 
 	}
 
 	@Test
-	public void testInValidRegistration() {
+	 void testInValidRegistration() {
 		assertFalse(CarValidator.validateRegistration("tn08cd0066"));
 
 	}

@@ -28,7 +28,7 @@ public class TestReadCarList {
 	}
 	
 	@Test
-	public void testUpdateSuccess() throws ServiceException, InvalidCarException, DAOException {
+	 void testUpdateSuccess() throws ServiceException, InvalidCarException, DAOException {
 		CarService carService = new CarService();
 		Car car1 = new Car("TN 07 CD 1234");
 		String s = carService.listCar(car1);
@@ -40,7 +40,7 @@ public class TestReadCarList {
 	
 	
 	@Test
-	public void testUpdateFail() throws ServiceException, InvalidCarException, DAOException {
+	 void testUpdateFail() throws ServiceException, InvalidCarException, DAOException {
 		CarService carService = new CarService();
 		Car car1 = new Car("TN 08 CD 1234");
 		String s = carService.listCar(car1);
