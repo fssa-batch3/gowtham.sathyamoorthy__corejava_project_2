@@ -9,7 +9,7 @@ public class Car {
 				+ ", getCarNo()=" + getCarNo() + ", getDescription()=" + getDescription() + ", getClass()=" + getClass()
 				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-	private int car_id;
+
 	/**
 	 * @return the user_id
 	 */
@@ -17,26 +17,31 @@ public class Car {
 		return car_id;
 	}
 
-
 	/**
 	 * @param user_id the user_id to set
 	 */
 //	public void setUser_id(int user_id) {
 //		this.car_id = car_id;
 //	}
-	public void setCar_id(int car_id) {
-		this.car_id = car_id;
-	}
+
 	private String carmodel;
 	private String carImage;
 	private String carNo;
 	private String description;
 	private int driver_id;
+	private int car_id;
 
 	public Car(String carNo) {
 		this.carNo = carNo;
 	}
-	 
+
+	public void setCar_id(int car_id) {
+		this.car_id = car_id;
+	}
+
+	public int getCarId() {
+		return car_id;
+	}
 
 	public Car(String carImage, String description) {
 		super();
@@ -46,9 +51,9 @@ public class Car {
 		this.description = description;
 	}
 
-	public Car(int driver_id, String carNo, String carmodel, String carImage, String description) {
+	public Car(int car_id, String carNo, String carmodel, String carImage, String description) {
 		super();
-		this.driver_id = driver_id;
+		this.car_id = car_id;
 		this.carmodel = carmodel;
 		this.carImage = carImage;
 		this.carNo = carNo;
@@ -63,10 +68,11 @@ public class Car {
 	public void setCarmodel(String carmodel) {
 		this.carmodel = carmodel;
 	}
-	
+
 	public int getUserId() {
 		return driver_id;
 	}
+
 	public void setUserId(int driver_id) {
 		this.driver_id = driver_id;
 	}

@@ -4,23 +4,29 @@ public class Driver {
 	private long aadharNumber;
 	private String licenseNumber;
 	private int experience;
-private int id; 
+	private int id;
+
 	public int getId() {
-	return id;
-}
+		return id;
+	}
 
-public void setId(int id) {
-	this.id = id;
-}
-
-	public Driver (int id, long aadhar_number, String licensence_number, int experience ) {
-		super();
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Driver(long aadhar_number, String licensence_number, int experience) {
 		this.aadharNumber = aadhar_number;
 		this.licenseNumber = licensence_number;
 		this.experience = experience;
-}
+	}
 	// This is getters and setters for DriverModel
+
+	public Driver(int id,long aadhar, String licensence_number, Integer experience2) {
+		this.id = id;
+		this.aadharNumber = aadhar;
+		this.licenseNumber = licensence_number;
+		this.experience = experience2;
+	}
 
 	public long getAadhar_number() {
 		return aadharNumber;
@@ -46,4 +52,4 @@ public void setId(int id) {
 		this.experience = experience;
 	}
 
-	}
+}

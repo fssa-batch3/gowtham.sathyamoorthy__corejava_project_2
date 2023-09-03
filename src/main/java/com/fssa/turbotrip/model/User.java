@@ -10,18 +10,18 @@ public class User {
 	private int isdeleted;
 	private boolean isdriver;
 
-	public User(String username, String email, String phone, String password, int isdeleted, boolean isdriver) {
-		this.email = email;
-		this.username = username; 
-		this.password = password;
-		this.phone = phone;
-		this.setIsdeleted(isdeleted);
-		this.setIsdriver(isdriver);
-		
-	}
+//	public User(long id, String username, String email, String phone, String password, int isdeleted, boolean isdriver) {
+//		this.email = email;
+//		this.username = username; 
+//		this.password = password;
+//		this.phone = phone;
+//		this.setIsdeleted(isdeleted);
+//		this.setIsdriver(isdriver);
+//		
+//	}
 	
-	public User(int user_id,String username, String email, String phone, String password, int isdeleted, boolean isdriver) {
-		this.user_id = user_id;
+	public User(String username, String email, String phone, String password, int isdeleted, boolean isdriver) {
+	
 		this.email = email;
 		this.username = username; 
 		this.password = password;
@@ -46,6 +46,10 @@ public class User {
 		this.password = password;
 	}
 	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}

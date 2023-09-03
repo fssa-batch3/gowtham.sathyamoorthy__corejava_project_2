@@ -25,7 +25,7 @@ public class ConnectionUtil {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			return DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "Amma@123");
+			return DriverManager.getConnection("jdbc:mysql://localhost:3306/gowtham_sathyamoorthy_corejava_project", "root", "Amma@123");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException("Unable to Connect to Database", e);

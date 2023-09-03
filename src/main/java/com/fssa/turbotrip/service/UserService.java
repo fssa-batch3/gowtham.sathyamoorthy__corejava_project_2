@@ -15,6 +15,7 @@ public class UserService {
 		UserDAO userDAO = new UserDAO();
 		try {
 			UserValidator.validateUser(user);
+			userDAO.checkUserDataExistOrNot(user.getEmail());
 			if (userDAO.createUser(user)) {
 				System.out.println(user.getEmail() + "Successfully registered!");
 				return true;
@@ -37,7 +38,7 @@ public class UserService {
 			UserValidator.validatePassword(user.getPassword());
 
 			UserDAO userDAO = new UserDAO();
-			if (userDAO.login(user)) {
+			if (userDAO.login(user.getEmail(), user.getPassword())) {
 				System.out.println(user.getEmail() + " Successfully logged in");
 				return true;
 			} else {
