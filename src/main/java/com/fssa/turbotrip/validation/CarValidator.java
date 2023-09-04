@@ -65,7 +65,7 @@ public class CarValidator {
 		String pattern_string = "[A-Z]{2}+ \\d{2} +[A-Z]{2}+ \\d{4}";
 		match = Pattern.matches(pattern_string, registration);
 
-		if (match) {
+		if (match) { 
 
 			System.out.println("Valid Car Registration.");
 		} else {

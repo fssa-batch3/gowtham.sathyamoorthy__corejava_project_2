@@ -1,4 +1,4 @@
-package com.fssa.turbotrip.service;
+ package com.fssa.turbotrip.service;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -19,7 +19,7 @@ import com.fssa.turbotrip.validation.exception.InvalidCarException;
 	@Test
 	void testUpdateSuccess() throws ServiceException, InvalidCarException, DAOException {
 		CarService carService = new CarService();
-		String Carno = "TN 08 CD 0099";
+		String Carno = "tn 07 bd 2345";
 		Car car1 = new Car("https://example.com", "It is nine seater");
 		assertTrue(carService.updateCar(car1, Carno));
 	}

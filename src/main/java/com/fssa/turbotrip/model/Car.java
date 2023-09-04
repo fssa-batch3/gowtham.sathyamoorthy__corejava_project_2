@@ -51,9 +51,9 @@ public class Car {
 		this.description = description;
 	}
 
-	public Car(int car_id, String carNo, String carmodel, String carImage, String description) {
+	public Car(int driver_id, String carNo, String carmodel, String carImage, String description) {
 		super();
-		this.car_id = car_id;
+		this.driver_id =  driver_id;
 		this.carmodel = carmodel;
 		this.carImage = carImage;
 		this.carNo = carNo;
