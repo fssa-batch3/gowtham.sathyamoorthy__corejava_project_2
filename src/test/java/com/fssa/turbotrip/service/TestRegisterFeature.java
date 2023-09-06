@@ -1,11 +1,11 @@
 package com.fssa.turbotrip.service;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertFalse; 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
-import java.sql.Date;
+
 
 import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.service.exception.ServiceException;
@@ -14,7 +14,7 @@ import com.fssa.turbotrip.service.exception.ServiceException;
  * Test class for evaluating the registration functionality of the UserService.
  */
 
-public class TestRegisterFeature {
+class TestRegisterFeature {
 
 	@Test
 
