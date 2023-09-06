@@ -14,6 +14,7 @@ import com.fssa.turbotrip.model.Car;
 import com.fssa.turbotrip.utils.ConnectionUtil;
 
 public class CarDAO {
+	private final String CARNUMBER = "car_number";
 // This is Attaching new car in the CarList
 	public boolean createCar(Car car) throws DAOException {
 		final String insertQuery = "INSERT INTO car_list (driver_id, car_number, car_model, car_image, car_description) VALUES (?,?,?,?,?)";
@@ -46,7 +47,7 @@ public class CarDAO {
 			}
 
 			while (result.next()) {
-				String number = result.getString("car_number");
+				String number = result.getString(CARNUMBER);
 				String model = result.getString("car_model");
 				String img = result.getString("car_image");
 				String description = result.getString("car_description");
@@ -88,7 +89,7 @@ public class CarDAO {
 			pst.setString(1, Carno);
 			try (ResultSet resultSet = pst.executeQuery()) {
 				while (resultSet.next()) {
-					String num1 = resultSet.getString("car_number");
+					String num1 = resultSet.getString(CARNUMBER);
 					System.out.println("carno: " + num1);
 					if (Carno.toLowerCase().trim().equals(num1)) {
 						count++;
@@ -154,7 +155,7 @@ public class CarDAO {
 				ResultSet rs = statement.executeQuery(selectCarListQuery)){
 			while(rs.next()) {
 				int carId = rs.getInt("car_id");
-				String CarNo = rs.getString("car_number");
+				String CarNo = rs.getString(CARNUMBER);
 				String Carmodel = rs.getString("car_model");
 				String CarImage = rs.getString("car_image");
 				String Description = rs.getString("car_description");

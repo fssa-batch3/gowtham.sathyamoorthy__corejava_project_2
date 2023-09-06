@@ -1,4 +1,4 @@
-package com.fssa.turbotrip.model;
+ package com.fssa.turbotrip.model;
 
 public class Car {
 
