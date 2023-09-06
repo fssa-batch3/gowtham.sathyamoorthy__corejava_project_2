@@ -109,9 +109,11 @@ public class UserDAO {
 				String password = rs.getString("password");
 				int is_deleted = rs.getInt("is_deleted");
 				boolean is_driver = rs.getBoolean("is_driver");
+			
 				User user = new User(username, email, phone, password, is_deleted, is_driver);
+				user.setUser_id(userId);
 				users.add(user);
-			}
+			} 
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}

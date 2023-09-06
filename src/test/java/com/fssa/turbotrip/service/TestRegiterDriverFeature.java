@@ -19,8 +19,7 @@ public class TestRegiterDriverFeature {
 		User user1 = new User( "Arunkumar", "arun@gmail.com", "9840634596", "Kumar@12345", 0, true);
 
 		Driver user2 = new Driver( 1, 294457655678L, "AB1234567890987", 2);
-		// public Driver (long aadhar_number, String licensence_number, int experience,
-		// int id ) {
+	
 		
 
 		try {
@@ -34,6 +33,6 @@ public class TestRegiterDriverFeature {
 
 		
 
-	}
+	} 
 
 }

@@ -29,7 +29,7 @@ public class DriverService {
 			throw new ServiceException(e);
 		}
 
-	}
+	} 
 
 	public boolean registerUser(User user) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
