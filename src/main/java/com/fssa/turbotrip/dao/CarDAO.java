@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
 
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
@@ -174,7 +174,7 @@ catch (SQLException e) {
 }
 return cars;
 }
-	public static void main(String[] args) throws DAOException {
+	public static void main(String[] args) {
 		Car car = new Car(1,"tn 08 cd 0099", "Car", "https://media.istockphoto.com/id/495605964/photo/generic-compact-red-car.jpg?s=612x612&w=0&k=20&c=eElEDukSWi6HsUPXflSebpUm7j9tPNq7WvFOGIlqgeA=", "it is five seater ");
 		
 	}
