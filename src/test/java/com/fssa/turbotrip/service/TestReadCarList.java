@@ -21,7 +21,7 @@ public class TestReadCarList {
 
 	public static void main(String[] args) throws ServiceException, InvalidCarException, DAOException {
 		
-		Car car1 = new Car("TN 08 CD 0099");
+		Car car1 = new Car("TN 07 bd 2345");
 		CarDAO c = new CarDAO();
 	CarService carService = new CarService();
 		System.out.println(carService.listCar(car1));
@@ -30,11 +30,11 @@ public class TestReadCarList {
 	@Test
 	 void testUpdateSuccess() throws ServiceException, InvalidCarException, DAOException {
 		CarService carService = new CarService();
-		Car car1 = new Car("TN 07 CD 1234");
+		Car car1 = new Car("tn 07 bd 2345");
 		String s = carService.listCar(car1);
 		String[] split = s.split(",");
 		String output = split[0].toLowerCase().trim();
-		assertEquals("carnumber: tn 07 cd 1234",output);
+		assertEquals("carnumber: tn 07 bd 2345",output);
 	}
 	
 	

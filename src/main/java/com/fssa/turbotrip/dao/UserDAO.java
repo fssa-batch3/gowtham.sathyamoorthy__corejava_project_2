@@ -32,7 +32,7 @@ public class UserDAO {
 					if (userExists) {
 						String storedPassword = resultSet.getString("password");
 						int userId = resultSet.getInt("user_id");
-						User user1 = new User();
+			 			User user1 = new User();
 						user1.setUser_id(userId);
 						if (storedPassword.equals(password)) {
 							return true;

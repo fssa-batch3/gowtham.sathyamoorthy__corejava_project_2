@@ -33,7 +33,7 @@ public class CarDAO {
 
 // This is read CarList code
 	public String readCar(Car car) throws DAOException {
-		String selectQuery = "SELECT * FROM project.car_list WHERE car_number = ?";
+		String selectQuery = "SELECT * FROM gowtham_sathyamoorthy_corejava_project.car_list WHERE car_number = ?";
 		ResultSet result = null;
 		StringBuilder resultBuilder = new StringBuilder();
 		try (Connection connect = ConnectionUtil.getConnection();
@@ -112,14 +112,14 @@ public class CarDAO {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		int rows = 0;
-
+ 
 		try {
 			connection = ConnectionUtil.getConnection();
 			String isDelete = Integer.toString(isDeleted);
 			String deleteQuery = "UPDATE car_list SET is_deleted = ? WHERE car_number = '" + Carno.toLowerCase().trim()
 					+ "';";
 			pst = connection.prepareStatement(deleteQuery);
-			pst.setString(1, isDelete);
+	 		pst.setString(1, isDelete);
 			// Execute query
 			rows = pst.executeUpdate();
 		} catch (SQLException e) {
@@ -145,7 +145,7 @@ public class CarDAO {
 	 *
 	 *@return
 	 *@throws DAOException
-	*/
+	*/ 
 	public List<Car> getAllCars() throws DAOException{
 		final String selectCarListQuery ="SELECT * FROM car_list WHERE is_deleted=0";
 		List<Car> cars = new ArrayList<>();
@@ -163,6 +163,7 @@ public class CarDAO {
 				cars.add(car);
 				
 			}
+			
 		}
 			
 catch (SQLException e) {

@@ -18,7 +18,7 @@ import com.fssa.turbotrip.service.exception.ServiceException;
 
 	@Test
 	void TestDeleteCarSuccess() {
-		String Carno = "tn 07 bd 2345";
+		String Carno = "tn 08 cd 9876";
 		int isDeleted = 1;
 		CarService carService = new CarService();
 		try {
