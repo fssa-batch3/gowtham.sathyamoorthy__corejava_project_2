@@ -22,12 +22,12 @@ import com.fssa.turbotrip.validation.exception.InvalidCarException;
 	@Test
 	void testUpdateSuccess() throws ServiceException, InvalidCarException, DAOException {
 		CarService carService = new CarService();
-		String Carno = "tn 08 cd 9087";
+		String Carno = "tn 07 bd 3452";
 		Car car1 = new Car("https://example.com", "It is nine seater");
 		assertTrue(carService.updateCar(car1, Carno));
 	}
 
-	@Test 
+	@Test  
 	void testUpdateFail() {
 		CarService carService = new CarService();
 		try {

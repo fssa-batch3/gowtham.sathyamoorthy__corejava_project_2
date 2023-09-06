@@ -16,7 +16,7 @@ import com.fssa.turbotrip.utils.ConnectionUtil;
 
 public class CarDAO {
 	private static final String CARNUMBER = "car_number";
-	 private static final Logger logger = Logger.getLogger(CarDAO.class.getName());
+	
 // This is Attaching new car in the CarList
 	public boolean createCar(Car car) throws DAOException {
 		final String insertQuery = "INSERT INTO car_list (driver_id, car_number, car_model, car_image, car_description) VALUES (?,?,?,?,?)";
@@ -92,7 +92,7 @@ public class CarDAO {
 			try (ResultSet resultSet = pst.executeQuery()) {
 				while (resultSet.next()) {
 					String num1 = resultSet.getString(CARNUMBER);
-					 logger.info("carno: " + num1);
+					
 					if (Carno.toLowerCase().trim().equals(num1)) {
 						count++;
 					}
