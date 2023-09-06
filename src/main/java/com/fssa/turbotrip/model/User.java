@@ -1,4 +1,4 @@
-package com.fssa.turbotrip.model;
+ package com.fssa.turbotrip.model;
 
 public class User {
 
@@ -47,7 +47,7 @@ public class User {
 	}
 	
 	public User() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public void setEmail(String email) {

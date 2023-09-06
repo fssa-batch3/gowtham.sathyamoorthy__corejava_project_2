@@ -86,7 +86,7 @@ import org.junit.jupiter.api.Test;
 // This is test case for UserPhone is valid or not:
 	@Test
 
-	public void testValidPhoneNumber() {
+	 void testValidPhoneNumber() {
 		assertTrue(UserValidator.validatePhone("9842356365"));
 	}
 
