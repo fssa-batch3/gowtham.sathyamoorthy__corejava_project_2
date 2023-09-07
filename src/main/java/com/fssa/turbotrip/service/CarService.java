@@ -7,17 +7,19 @@ import com.fssa.turbotrip.dao.CarDAO;
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
 import com.fssa.turbotrip.service.exception.ServiceException;
+import com.fssa.turbotrip.utils.Logger;
 import com.fssa.turbotrip.validation.CarValidator;
 import com.fssa.turbotrip.validation.exception.InvalidCarException;
 
 // This code is checking all the validation or matched to the given input or not !
 public class CarService {
+	Logger log = new Logger();
 	public boolean createCar(Car car) throws ServiceException {
 		CarDAO carDAO = new CarDAO();
 		try {
 			CarValidator.validateCar(car);
 			if (carDAO.createCar(car)) {
-				System.out.println(car.getCarNo() + " Successfully Your Car registered!");
+				log.debug(car.getCarNo() + " Successfully Your Car registered!");
 				return true;
 			} else {
 				System.out.println("not successfully added");
@@ -67,6 +69,7 @@ public class CarService {
 		try {
 			if (carDAO.sameNumberExist(Carno)) {
 				if (carDAO.deleteCar(Carno, isDeleted)) {
+					
 					System.out.println("Car " + Carno + " Successfully Deleted!");
 					return true;
 				} else {

@@ -25,7 +25,7 @@ public class UserService {
 			}
 
 		} catch (DAOException | InvalidUserException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 
 	}
@@ -60,7 +60,7 @@ public class UserService {
 			UserDAO userDAO = new UserDAO();
 			return userDAO.getAllUsers();
 		} catch (DAOException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 	}
 

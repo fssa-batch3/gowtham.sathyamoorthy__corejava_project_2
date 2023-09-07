@@ -6,90 +6,67 @@ import java.util.regex.Pattern;
 import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.validation.exception.InvalidUserException;
 
-// This code for validating the given inputs or valid or not!!!
-
 public class UserValidator {
-	public static boolean validateUser(User user) throws InvalidUserException {
+    public static boolean validateUser(User user) throws InvalidUserException {
+        if (user != null && validateName(user.getUsername()) && validatePassword(user.getPassword())
+                && validateEmail(user.getEmail()) && validatePhone(user.getPhone())) {
+            return true;
+        } else {
+            throw new InvalidUserException("User details not valid");
+        }
+    }
 
-		if (user != null && validateName(user.getUsername()) && validatePassword(user.getPassword())
-				&& validateEmail(user.getEmail()) && validatePhone(user.getPhone())) {
-			return true;
-		} else {
-			throw new InvalidUserException("User details not valid");
-		}
+    public static boolean validateName(String name) throws InvalidUserException {
+        if (name == null)
+            throw new InvalidUserException("Username is null");
 
-	}
-	// This code is validating the valid UserName to store data in User table
-	public static boolean validateName(String name) {
-		boolean match = false;
+        String regex = "^[A-Za-z]\\w{2,29}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(name);
 
-		if (name == null)
-			return false;
+        if (m.matches()) {
+            return true;
+        } else {
+            throw new InvalidUserException("Invalid username format");
+        }
+    }
 
-		String regex = "^[A-Za-z]\\w{2,29}$";
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(name);
-		match = m.matches();
-		if (match) {
-			System.out.println("The user name is valid.");
-		} else {
-			System.out.println("The user name is not valid");
-		}
+    public static boolean validatePassword(String password) throws InvalidUserException {
+        if (password == null)
+            throw new InvalidUserException("Password is null");
 
-		return match;
-	}
-	// This code is validating the valid UserPassword to store data in User table
+        String pattern_string = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])(?=.*[^\\s]).{8,}$";
 
-	public static boolean validatePassword(String password) {
-		boolean match = false;
+        if (Pattern.matches(pattern_string, password)) {
+            return true;
+        } else {
+            throw new InvalidUserException("Invalid password format");
+        }
+    }
 
-		if (password == null)
-			return false;
+    public static boolean validateEmail(String email) throws InvalidUserException {
+        if (email == null)
+            throw new InvalidUserException("Email is null");
 
-		String pattern_string = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])(?=.*[^\\s]).{8,}$";
-		match = Pattern.matches(pattern_string, password);
+        String regex = "^.*@.*\\..*$";
 
-		if (match) {
+        if (Pattern.matches(regex, email)) {
+            return true;
+        } else {
+            throw new InvalidUserException("Invalid email format");
+        }
+    }
 
-			System.out.println("Valid password.");
-		} else {
-			System.out.println("Invalid password.");
-		}
+    public static boolean validatePhone(String phone) throws InvalidUserException {
+        if (phone == null)
+            throw new InvalidUserException("Phone number is null");
 
-		return match;
-	}
-	// This code is validating the valid UserEmail to store data in User table
+        String regex = "^[6789]\\d{9}$";
 
-	public static boolean validateEmail(String email) {
-		boolean isMatch = false;
-
-		if (email == null)
-			return false;
-		String regex = "^.*@.*\\..*$";
-		isMatch = Pattern.matches(regex, email);
-		if (isMatch) {
-			System.out.println("The email address is: Valid");
-		} else {
-			System.out.println("The email address is: Invalid");
-		}
-		return isMatch;
-
-	}
-	// This code is validating the valid UserPhonenumber to store data in User table
-
-	public static boolean validatePhone(String phone) {
-		boolean isMatch = false;
-		if (phone == null)
-			return false;
-
-		String regex = "^[6789]\\d{9}$";
-		isMatch = Pattern.matches(regex, phone);
-		if (isMatch) {
-			System.out.println("The mobile number is: Valid");
-		} else {
-			System.out.println("The mobile number is: Invalid");
-		}
-		return isMatch;
-
-	}
+        if (Pattern.matches(regex, phone)) {
+            return true;
+        } else {
+            throw new InvalidUserException("Invalid phone number format");
+        }
+    }
 }

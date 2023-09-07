@@ -1,13 +1,12 @@
 package com.fssa.turbotrip.dao;
 
-import java.sql.Connection; 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
@@ -16,8 +15,16 @@ import com.fssa.turbotrip.utils.ConnectionUtil;
 
 public class CarDAO {
 	private static final String CARNUMBER = "car_number";
-	
-// This is Attaching new car in the CarList
+
+	/**
+	 * 
+	 * Creates a new car entry in the database.
+	 * 
+	 * @param car The Car object containing car information to be inserted.
+	 * @return True if the car was successfully created, false otherwise.
+	 * @throws DAOException If an SQL exception occurs while attempting to create
+	 *                      the car.
+	 */
 	public boolean createCar(Car car) throws DAOException {
 		final String insertQuery = "INSERT INTO car_list (driver_id, car_number, car_model, car_image, car_description) VALUES (?,?,?,?,?)";
 		try (Connection connect = ConnectionUtil.getConnection();
@@ -34,7 +41,13 @@ public class CarDAO {
 		}
 	}
 
-// This is read CarList code
+	/**
+	 * Reads car information from the database based on car object's car number.
+	 *
+	 * @param car The Car object contains the car number for which information is to be get.
+	 * @return A string containing car information if found, or an error message if no car is found.
+	 * @throws DAOException If an SQL exception occurs while attempting to read car information.
+	 */
 	public String readCar(Car car) throws DAOException {
 		String selectQuery = "SELECT * FROM gowtham_sathyamoorthy_corejava_project.car_list WHERE car_number = ?";
 		ResultSet result = null;
@@ -92,7 +105,7 @@ public class CarDAO {
 			try (ResultSet resultSet = pst.executeQuery()) {
 				while (resultSet.next()) {
 					String num1 = resultSet.getString(CARNUMBER);
-					
+
 					if (Carno.toLowerCase().trim().equals(num1)) {
 						count++;
 					}
@@ -115,14 +128,14 @@ public class CarDAO {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		int rows = 0;
- 
+
 		try {
 			connection = ConnectionUtil.getConnection();
 			String isDelete = Integer.toString(isDeleted);
 			String deleteQuery = "UPDATE car_list SET is_deleted = ? WHERE car_number = '" + Carno.toLowerCase().trim()
 					+ "';";
 			pst = connection.prepareStatement(deleteQuery);
-	 		pst.setString(1, isDelete);
+			pst.setString(1, isDelete);
 			// Execute query
 			rows = pst.executeUpdate();
 		} catch (SQLException e) {
@@ -146,36 +159,39 @@ public class CarDAO {
 	/**
 	 *
 	 *
-	 *@return
-	 *@throws DAOException
-	*/ 
-	public List<Car> getAllCars() throws DAOException{
-		final String selectCarListQuery ="SELECT * FROM car_list WHERE is_deleted=0";
+	 * @return
+	 * @throws DAOException
+	 */
+	public List<Car> getAllCars() throws DAOException {
+		final String selectCarListQuery = "SELECT * FROM car_list WHERE is_deleted=0";
 		List<Car> cars = new ArrayList<>();
 		try (Connection connect = ConnectionUtil.getConnection();
 				Statement statement = connect.createStatement();
-				ResultSet rs = statement.executeQuery(selectCarListQuery)){
-			while(rs.next()) {
+				ResultSet rs = statement.executeQuery(selectCarListQuery)) {
+			while (rs.next()) {
 				int carId = rs.getInt("car_id");
 				String CarNo = rs.getString(CARNUMBER);
 				String Carmodel = rs.getString("car_model");
 				String CarImage = rs.getString("car_image");
 				String Description = rs.getString("car_description");
-				 
-				Car car = new Car(carId,CarNo,Carmodel,CarImage,Description);
+
+				Car car = new Car(carId, CarNo, Carmodel, CarImage, Description);
 				cars.add(car);
-				
+
 			}
-			
+
 		}
-			
-catch (SQLException e) {
-	throw new DAOException(e);
-}
-return cars;
-}
+
+		catch (SQLException e) {
+			throw new DAOException(e);
+		}
+		return cars;
+	}
+
 	public static void main(String[] args) {
-		Car car = new Car(1,"tn 08 cd 0099", "Car", "https://media.istockphoto.com/id/495605964/photo/generic-compact-red-car.jpg?s=612x612&w=0&k=20&c=eElEDukSWi6HsUPXflSebpUm7j9tPNq7WvFOGIlqgeA=", "it is five seater ");
-		
+		Car car = new Car(1, "tn 08 cd 0099", "Car",
+				"https://media.istockphoto.com/id/495605964/photo/generic-compact-red-car.jpg?s=612x612&w=0&k=20&c=eElEDukSWi6HsUPXflSebpUm7j9tPNq7WvFOGIlqgeA=",
+				"it is five seater ");
+
 	}
 }
