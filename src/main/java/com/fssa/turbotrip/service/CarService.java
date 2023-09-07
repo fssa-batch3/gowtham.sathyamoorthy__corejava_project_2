@@ -13,7 +13,7 @@ import com.fssa.turbotrip.validation.exception.InvalidCarException;
 
 // This code is checking all the validation or matched to the given input or not !
 public class CarService {
-	Logger log = new Logger();
+	static Logger log = new Logger();
 	public boolean createCar(Car car) throws ServiceException {
 		CarDAO carDAO = new CarDAO();
 		try {
@@ -22,7 +22,7 @@ public class CarService {
 				log.debug(car.getCarNo() + " Successfully Your Car registered!");
 				return true;
 			} else {
-				System.out.println("not successfully added");
+				log.debug("not successfully added");
 				return false;
 			}
 
@@ -46,14 +46,14 @@ public class CarService {
 		try {
 			if (CarValidator.validateupdateCar(car)) {
 				if (CarDAO.updateCar(car, Carno)) {
-					System.out.println(Carno + " Successfully Your Car updated!");
+					log.debug(Carno + " Successfully Your Car updated!");
 					return true;
 				} else {
-					System.out.println("not successfully updated");
+					log.debug("not successfully updated");
 					return false;
 				}
 			} else {
-				System.out.println("not successfully updated");
+				log.debug("not successfully updated");
 				return false;
 			}
 
@@ -70,13 +70,13 @@ public class CarService {
 			if (carDAO.sameNumberExist(Carno)) {
 				if (carDAO.deleteCar(Carno, isDeleted)) {
 					
-					System.out.println("Car " + Carno + " Successfully Deleted!");
+					log.debug("Car " + Carno + " Successfully Deleted!");
 					return true;
 				} else {
 					return false;
 				}
 			} else {
-				System.out.println("this car doesn't here!");
+				log.debug("this car doesn't here!");
 				return false;
 			}
 		} catch (SQLException e) {
