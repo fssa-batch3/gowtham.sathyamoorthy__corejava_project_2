@@ -6,10 +6,12 @@ import com.fssa.turbotrip.dao.UserDAO;
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.service.exception.ServiceException;
+import com.fssa.turbotrip.utils.Logger;
 import com.fssa.turbotrip.validation.UserValidator;
 import com.fssa.turbotrip.validation.exception.InvalidUserException;
 
 public class UserService {
+	static Logger log = new Logger();
 	// This code is checking the validation in register user
 	public boolean registerUser(User user) throws ServiceException {
 		UserDAO userDAO = new UserDAO();
@@ -17,10 +19,10 @@ public class UserService {
 			UserValidator.validateUser(user);
 			userDAO.checkUserDataExistOrNot(user.getEmail());
 			if (userDAO.createUser(user)) {
-				System.out.println(user.getEmail() + "Successfully registered!");
+				log.debug(user.getEmail() + "Successfully registered!");
 				return true;
 			} else {
-				System.out.println("not successfully added");
+				log.debug("not successfully added");
 				return false;
 			}
 
@@ -39,7 +41,7 @@ public class UserService {
 
 			UserDAO userDAO = new UserDAO();
 			if (userDAO.login(user.getEmail(), user.getPassword())) {
-				System.out.println(user.getEmail() + " Successfully logged in");
+				log.debug(user.getEmail() + " Successfully logged in");
 				return true;
 			} else {
 				return false;
