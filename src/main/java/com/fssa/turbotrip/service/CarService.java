@@ -26,7 +26,7 @@ public class CarService {
 				return false;
 			}
 
-		} catch (DAOException | InvalidCarException e) {
+		} catch (DAOException | InvalidCarException e) { 
 			throw new ServiceException(e);
 		}
 

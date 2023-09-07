@@ -14,7 +14,7 @@ import com.fssa.turbotrip.service.exception.ServiceException;
  * Test class for evaluating the registration functionality of the UserService.
  */
 
-class TestRegisterFeature {
+class TestRegisterFeature { 
 
 	@Test
 

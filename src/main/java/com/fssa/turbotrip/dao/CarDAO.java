@@ -45,7 +45,7 @@ public class CarDAO {
 	 * Reads car information from the database based on car object's car number.
 	 *
 	 * @param car The Car object contains the car number for which information is to be get.
-	 * @return A string containing car information if found, or an error message if no car is found.
+	 * @return A string containing car details if found, or an error message if no car is found.
 	 * @throws DAOException If an SQL exception occurs while attempting to read car information.
 	 */
 	public String readCar(Car car) throws DAOException {
@@ -202,9 +202,6 @@ public class CarDAO {
 		return cars;
 	}
 
-	//public static void main(String[] args) {
-	//	Car car = new Car(1, "tn 08 cd 0099", "Car",
-				//"https://media.istockphoto.com/id/495605964/photo/generic-compact-red-car.jpg?s=612x612&w=0&k=20&c=eElEDukSWi6HsUPXflSebpUm7j9tPNq7WvFOGIlqgeA=",
-				//"it is five seater ");
+	
 
 	}

@@ -63,7 +63,7 @@ public class UserValidator {
 
         String regex = "^[6789]\\d{9}$";
 
-        if (Pattern.matches(regex, phone)) {
+        if (Pattern.matches(regex, phone)) { 
             return true;
         } else {
             throw new InvalidUserException("Invalid phone number format");

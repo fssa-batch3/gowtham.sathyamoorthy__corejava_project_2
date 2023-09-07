@@ -59,7 +59,7 @@ import com.fssa.turbotrip.validation.exception.InvalidCarException;
 		assertTrue(CarValidator.validateRegistration("AB 12 CD 2023"));
 
 	}
-
+ 
 	@Test
 	 void testInValidRegistration() {
 		assertFalse(CarValidator.validateRegistration("tn08cd0066"));

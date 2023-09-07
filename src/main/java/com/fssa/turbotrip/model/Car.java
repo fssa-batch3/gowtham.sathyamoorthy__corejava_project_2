@@ -92,7 +92,7 @@ public class Car {
 	}
 
 	public void setCarNo(String carNo) {
-		this.carNo = carNo;
+		this.carNo = carNo; 
 	}
 
 	public String getDescription() {

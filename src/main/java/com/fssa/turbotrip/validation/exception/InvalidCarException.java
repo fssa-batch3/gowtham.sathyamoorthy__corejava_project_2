@@ -7,7 +7,7 @@ public class InvalidCarException extends Exception{
 
 	public InvalidCarException(String msg) {
 		super(msg);
-	}
+	} 
 
 	public InvalidCarException(Throwable e) {
 		super(e);

@@ -39,7 +39,7 @@ public class CarValidator {
 	}
 
 	public static boolean validateModel(String model) {
-		boolean match = false;
+		boolean match = false; 
 
 		if (model == null)
 			return false;

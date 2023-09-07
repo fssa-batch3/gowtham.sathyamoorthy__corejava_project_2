@@ -31,7 +31,7 @@ public class User {
 		
 	}
 	// This is getters and setters for UserModel
-
+ 
 	public String getPhone() {
 		return phone;
 	}

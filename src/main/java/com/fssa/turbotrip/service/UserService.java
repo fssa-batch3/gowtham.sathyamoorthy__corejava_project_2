@@ -24,7 +24,7 @@ public class UserService {
 			} else {
 				log.debug("not successfully added");
 				return false;
-			}
+			} 
 
 		} catch (DAOException | InvalidUserException e) {
 			throw new ServiceException(e.getMessage());

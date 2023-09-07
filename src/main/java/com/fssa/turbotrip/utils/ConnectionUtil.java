@@ -28,7 +28,7 @@ public class ConnectionUtil {
 			return DriverManager.getConnection("jdbc:mysql://localhost:3306/gowtham_sathyamoorthy_corejava_project",
 					"root", "Amma@123");
 		} catch (SQLException e) {
-
+ 
 			throw new RuntimeException("Unable to Connect to Database", e);
 		} catch (ClassNotFoundException e) {
 

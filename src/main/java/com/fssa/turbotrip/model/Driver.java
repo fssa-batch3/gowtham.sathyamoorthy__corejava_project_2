@@ -30,7 +30,7 @@ public class Driver {
 
 	public long getAadhar_number() {
 		return aadharNumber;
-	}
+	} 
 
 	public void setAadhar_number(long aadhar_number) {
 		this.aadharNumber = aadhar_number;

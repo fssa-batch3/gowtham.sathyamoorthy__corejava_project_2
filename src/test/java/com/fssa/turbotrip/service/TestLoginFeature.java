@@ -24,7 +24,7 @@ import com.fssa.turbotrip.service.exception.ServiceException;
 
 		}
 	}
-
+ 
 	@Test
 
 	 void loginFailed() {

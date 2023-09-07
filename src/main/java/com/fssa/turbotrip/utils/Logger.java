@@ -5,3 +5,4 @@ public void debug(Object e ) {
 	System.out.println(e);
 }
 }
+ 

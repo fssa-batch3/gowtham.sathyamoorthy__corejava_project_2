@@ -34,7 +34,7 @@ public class TestReadCarList {
 		String s = carService.listCar(car1);
 		String[] split = s.split(",");
 		String output = split[0].toLowerCase().trim();
-		assertEquals("carnumber: tn 07 bd 2345",output);
+		assertEquals("carnumber: tn 07 bd 2345",output); 
 	}
 	
 	 

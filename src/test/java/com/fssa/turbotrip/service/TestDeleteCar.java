@@ -18,7 +18,7 @@ import com.fssa.turbotrip.service.exception.ServiceException;
 
 	@Test
 	void TestDeleteCarSuccess() {
-		String Carno = "tn 07 bd 7654";
+		String Carno = "tn 07 bd 5432";
 		int isDeleted = 1;
 		CarService carService = new CarService();
 		try {
@@ -26,7 +26,7 @@ import com.fssa.turbotrip.service.exception.ServiceException;
 		} catch (DAOException | ServiceException e) {
 			e.printStackTrace();
 			fail();
-		}
+		} 
 	}
 
 	@Test

@@ -19,7 +19,7 @@ public class DriverValidation {
 			throw new InvalidDriverException("Driver details not valid");
 		}
 
-	}
+	} 
 	// This code is validating the valid AadharNumber to store data in Driver table
 
 	public static boolean validateAadharnumber(long aadhar_number) {

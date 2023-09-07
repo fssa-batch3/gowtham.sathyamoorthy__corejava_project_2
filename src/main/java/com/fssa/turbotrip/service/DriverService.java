@@ -29,7 +29,7 @@ public class DriverService {
 
 		} catch (DAOException | InvalidDriverException e) {
 			throw new ServiceException(e);
-		}
+		} 
 
 	} 
 

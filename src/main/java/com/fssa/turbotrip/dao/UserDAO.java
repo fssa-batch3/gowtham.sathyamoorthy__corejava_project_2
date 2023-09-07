@@ -113,7 +113,7 @@ public class UserDAO {
 				User user = new User(username, email, phone, password, is_deleted, is_driver);
 				user.setUser_id(userId);
 				users.add(user);
-			} 
+			}  
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
