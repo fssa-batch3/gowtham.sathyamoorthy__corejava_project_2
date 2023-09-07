@@ -78,7 +78,14 @@ public class CarDAO {
 		}
 	}
 
-	// This is Update the Car details in carList
+	/**
+	 * Updates a car's information in the database.
+	 *
+	 * @param car The Car object containing the updated car information.
+	 * @param Carno The car number to identify the car to update.
+	 * @return True if the car information was successfully updated, false otherwise.
+	 * @throws DAOException If there is an error during the update process, a DAOException is thrown.
+	 */
 
 	public static boolean updateCar(Car car, String Carno) throws DAOException {
 		String updateQuery = "UPDATE car_list SET car_image=?, car_description=? WHERE car_number=?";
@@ -122,7 +129,14 @@ public class CarDAO {
 		return match;
 	}
 
-	// This is Delete the car details in the CarList
+	/**
+	 * Deletes a car from the database by updating its "is_deleted" status.
+	 *
+	 * @param Carno The car number is identify the car to delete.
+	 * @param isDeleted The new status (0 for not deleted, 1 for deleted) to set for the car.
+	 * @return True if the car was successfully deleted, false otherwise.
+	 * @throws DAOException If there is an error during the deletion process, a DAOException is thrown.
+	 */
 
 	public boolean deleteCar(String Carno, int isDeleted) throws DAOException {
 		Connection connection = null;
@@ -188,10 +202,9 @@ public class CarDAO {
 		return cars;
 	}
 
-	public static void main(String[] args) {
-		Car car = new Car(1, "tn 08 cd 0099", "Car",
-				"https://media.istockphoto.com/id/495605964/photo/generic-compact-red-car.jpg?s=612x612&w=0&k=20&c=eElEDukSWi6HsUPXflSebpUm7j9tPNq7WvFOGIlqgeA=",
-				"it is five seater ");
+	//public static void main(String[] args) {
+	//	Car car = new Car(1, "tn 08 cd 0099", "Car",
+				//"https://media.istockphoto.com/id/495605964/photo/generic-compact-red-car.jpg?s=612x612&w=0&k=20&c=eElEDukSWi6HsUPXflSebpUm7j9tPNq7WvFOGIlqgeA=",
+				//"it is five seater ");
 
 	}
-}

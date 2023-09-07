@@ -1,6 +1,6 @@
  package com.fssa.turbotrip.model;
 
-import com.fssa.turbotrip.utils.Logger;
+
 
 public class Car {
 

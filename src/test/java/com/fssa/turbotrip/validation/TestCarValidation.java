@@ -16,7 +16,7 @@ import com.fssa.turbotrip.validation.exception.InvalidCarException;
 	 void testInvalidCarDescription() throws InvalidCarException {
 		assertFalse(CarValidator.validateDescription("it@100 seater car"));
 	}
-	
+	 
 	// This is test case for CarImage is valid or not
 	
 	@Test
