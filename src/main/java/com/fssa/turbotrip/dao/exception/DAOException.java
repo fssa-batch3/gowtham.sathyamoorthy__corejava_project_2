@@ -1,4 +1,4 @@
-package com.fssa.turbotrip.dao.exception;
+ package com.fssa.turbotrip.dao.exception;
 // This code is used for DAO Exception
 public class DAOException extends Exception {
  
