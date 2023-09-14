@@ -119,6 +119,48 @@ public class UserDAO {
 		}
 		return users;
 	}
+		public User getUserByEmail(String email) throws DAOException {
+
+			final String SELECTQUERY = "SELECT * FROM user WHERE email = ?";
+
+			try (Connection connect = ConnectionUtil.getConnection();
+					PreparedStatement pstmt = connect.prepareStatement(SELECTQUERY)) {
+
+				pstmt.setString(1, email);
+
+				try (ResultSet rs = pstmt.executeQuery()) {
+
+					if (rs.next()) {
+
+						
+						String name = rs.getString("username");
+						String loggedEmail = rs.getString("email");
+						String password = rs.getString("password");
+						String phonenumber = rs.getString("phone");
+
+						return new User(name, loggedEmail, password, phonenumber);
+
+					}
+
+				}
+
+			} catch (SQLException e) {
+				throw new DAOException(e);
+			}
+			return null;
+
+		
+	}
+		
+		public static void main(String[] args) {
+			try {
+				User user = new UserDAO().getUserByEmail("gowthaman.krish1705@gmail.com");
+				System.out.println(user.getEmail());
+				System.out.println(user.getUsername());
+			} catch (DAOException e) {
+				e.printStackTrace();
+			}
+		}
 
 //	public static void main(String[] args) {
 //		User users = new User("Krishna", "gowtham.krish1705@gmail.com", "9551555232", "Gowthi@123", 0, false);

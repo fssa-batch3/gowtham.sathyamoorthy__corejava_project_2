@@ -51,6 +51,32 @@ public class UserService {
 		}
 
 	}
+	
+	public User getUser(String email) throws ServiceException {
+		UserDAO userDAO = new UserDAO();
+		UserValidator validator = new UserValidator();
+
+		try {
+			User loggedUser = userDAO.getUserByEmail(email);
+			validator.validLoggedUser(loggedUser);
+			return loggedUser;
+		} catch (DAOException | InvalidUserException e) {
+			throw new ServiceException( e);
+		}
+	}
+	
+	public static void main(String[] args) {
+	
+		
+		try {
+			User user = new UserService().getUser("gowthaman.krish1705@gmail.com");
+			
+			System.out.println(user.getEmail()+" "+user.getPassword()+" "+user.getUsername()+" "+user.getPhone());
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	/**
 	 * 

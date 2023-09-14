@@ -69,4 +69,10 @@ public class UserValidator {
             throw new InvalidUserException("Invalid phone number format");
         }
     }
+    public void validLoggedUser(User user) throws InvalidUserException {
+
+		if (user == null)
+			throw new InvalidUserException("Cannot get user's details");
+
+	}
 }

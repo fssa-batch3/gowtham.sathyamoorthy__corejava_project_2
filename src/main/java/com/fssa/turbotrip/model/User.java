@@ -50,6 +50,16 @@ public class User {
 	
 	}
 
+	public User(String name, String loggedEmail, String password2, String phonenumber) {
+		
+		this.username = name;
+		this.email = loggedEmail;
+		this.password = password2;
+		this.phone = phonenumber;
+		
+
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
