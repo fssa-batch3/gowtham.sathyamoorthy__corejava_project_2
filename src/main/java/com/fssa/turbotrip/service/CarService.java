@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.fssa.turbotrip.dao.CarDAO;
+import com.fssa.turbotrip.dao.UserDAO;
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
 import com.fssa.turbotrip.service.exception.ServiceException;
@@ -48,7 +49,7 @@ public class CarService {
 				if (CarDAO.updateCar(car, Carno)) {
 					log.debug(Carno + " Successfully Your Car updated!");
 					return true;
-				} else {
+				} else { 
 					log.debug("not successfully updated");
 					return false;
 				}
@@ -64,7 +65,7 @@ public class CarService {
 	}
 
 	// this code is checking the delete cars from the CarList
-	public static boolean deleteCar(String Carno, int isDeleted) throws ServiceException, DAOException {
+	public  boolean deleteCar(String Carno, int isDeleted) throws ServiceException, DAOException {
 		CarDAO carDAO = new CarDAO();
 		try {
 			if (carDAO.sameNumberExist(Carno)) {
@@ -84,14 +85,40 @@ public class CarService {
 		}
 	}
 
-	public List<Car> getAllCarlists() throws ServiceException {
+	public List<Car> getAllCarlists(int id) throws ServiceException {
 		try {
 			CarDAO carDAO = new CarDAO();
-			return carDAO.getAllCars();
+			return carDAO.getAllCars(id);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 
 		}
 
 	}
+
+	
+	
+	
+	
+	public int findIdByEmail(String email) throws ServiceException {
+		int user;
+		try {
+			user = UserDAO.findIdByEmail(email);
+			return user;
+		} catch (DAOException e) {
+			throw new ServiceException(e.getMessage());
+		}
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -21,7 +21,7 @@ class TestRegisterFeature {
 	void testRegistrationSuccess() {
 
 		UserService userService = new UserService();
-		User user = new User("Krishna", "gowtham.krish1705@gmail.com", "9551555232", "Gowthi@123", 0, false);
+		User user = new User("Krishna", "gowtham.krish1705@gmail.com", "9551555232", "Gowthi@123", 0, "o");
 		try {
 			assertTrue(userService.registerUser(user));
 		} catch (ServiceException e) {

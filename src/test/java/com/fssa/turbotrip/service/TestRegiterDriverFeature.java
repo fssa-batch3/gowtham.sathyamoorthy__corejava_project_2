@@ -15,15 +15,9 @@ public class TestRegiterDriverFeature {
 	public static void main(String[] args) {
 
 		UserService userService = new UserService();
-		DriverService driverService = new DriverService();
-		User user1 = new User( "Arunkumar", "arun@gmail.com", "9840634596", "Kumar@12345", 0, true);
-
-		Driver user2 = new Driver( 1, 294457655678L, "AB1234567890987", 2);
-	
-		
+		User user1 = new User( "Arunkumar", "arun@gmail.com", "9840634596", "Kumar@12345", 0, "TN 8687907868787");
  
 		try {
-			driverService.registerDriver(user2);
 			userService.registerUser(user1);
 
 		} catch (ServiceException e) {

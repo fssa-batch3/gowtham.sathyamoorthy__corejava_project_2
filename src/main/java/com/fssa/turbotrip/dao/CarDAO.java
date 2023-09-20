@@ -176,8 +176,8 @@ public class CarDAO {
 	 * @return
 	 * @throws DAOException
 	 */
-	public List<Car> getAllCars() throws DAOException {
-		final String selectCarListQuery = "SELECT * FROM car_list WHERE is_deleted=0";
+	public List<Car> getAllCars(int id) throws DAOException {
+		final String selectCarListQuery = "SELECT * FROM car_list WHERE is_deleted = 0 AND driver_id = "+id;
 		List<Car> cars = new ArrayList<>();
 		try (Connection connect = ConnectionUtil.getConnection();
 				Statement statement = connect.createStatement();

@@ -8,7 +8,7 @@ public class User {
 	private String password;
 	private String phone;
 	private int isdeleted;
-	private boolean isdriver;
+	private String license_number;
 
 //	public User(long id, String username, String email, String phone, String password, int isdeleted, boolean isdriver) {
 //		this.email = email;
@@ -20,18 +20,20 @@ public class User {
 //		
 //	}
 	
-	public User(String username, String email, String phone, String password, int isdeleted, boolean isdriver) {
+	public User(String username, String email, String phone, String password, int isdeleted, String license_number) {
 	
 		this.email = email;
 		this.username = username; 
 		this.password = password;
 		this.phone = phone;
 		this.setIsdeleted(isdeleted);
-		this.setIsdriver(isdriver);
+		this.setlicense_number(license_number);
 		
 	}
 	// This is getters and setters for UserModel
  
+	
+
 	public String getPhone() {
 		return phone;
 	}
@@ -89,12 +91,13 @@ public class User {
 		return "User [email=" + email + ", username=" + username + ", password=" + password + "]";
 	}
 
-	public boolean getIsdriver() {
-		return isdriver;
+	public String getlicense_number()
+	 {
+		return license_number;
 	}
 
-	public void setIsdriver(boolean isdriver) {
-		this.isdriver = isdriver;
+	public void setlicense_number(String license_number) {
+		this.license_number = license_number;
 	}
 
 	public int getIsdeleted() {

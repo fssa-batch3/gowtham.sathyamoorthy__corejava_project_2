@@ -15,19 +15,19 @@ import com.fssa.turbotrip.validation.exception.InvalidUserException;
 // This code is checking the validation of Register driver
 public class DriverService {
 	static Logger log = new Logger();
-	public boolean registerDriver(Driver driver) throws ServiceException {
+	public boolean registerDriver(User driver) throws ServiceException {
 		DriverDAO driverDAO = new DriverDAO();
 		try {
-			DriverValidation.validateDriver(driver);
-			if (driverDAO.createDriver(driver)) {
-				log.debug(driver.getId() + "Successfully registered!");
+			DriverValidation.validateUser(driver);
+			if (driverDAO.createUser(driver)) {
+				log.debug(driver.getUser_id() + "Successfully registered!");
 				return true;
 			} else {
 				log.debug("not successfully added");
 				return false;
 			}
 
-		} catch (DAOException | InvalidDriverException e) {
+		} catch (DAOException | InvalidUserException e) {
 			throw new ServiceException(e);
 		} 
 
@@ -47,6 +47,16 @@ public class DriverService {
 
 		} catch (DAOException | InvalidUserException e) {
 			throw new ServiceException(e);
+		}
+
+	}
+	public int findIdByEmail(String email) throws ServiceException {
+		int user;
+		try {
+			user = DriverDAO.findIdByEmail(email);
+			return user;
+		} catch (DAOException e) {
+			throw new ServiceException(e.getMessage());
 		}
 
 	}

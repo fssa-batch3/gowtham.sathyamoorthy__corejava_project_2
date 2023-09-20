@@ -3,83 +3,94 @@ package com.fssa.turbotrip.validation;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.fssa.turbotrip.model.Driver;
-import com.fssa.turbotrip.validation.exception.InvalidDriverException;
+import com.fssa.turbotrip.model.User;
+import com.fssa.turbotrip.validation.exception.InvalidUserException;
 
-public class DriverValidation {
+	public class DriverValidation {
+	    public static boolean validateUser(User user) throws InvalidUserException {
+	        if (user != null && validateName(user.getUsername()) && validatePassword(user.getPassword())
+	                && validateEmail(user.getEmail()) && validatePhone(user.getPhone()) && validateLicensencenumber(user.getlicense_number()) ) {
+	            return true;
+	        } else {
+	            throw new InvalidUserException("User details not valid");
+	        }
+	    }
 
-	// This code for validating the given inputs or valid or not!!!
-	public static boolean validateDriver(Driver driver) throws InvalidDriverException {
+	    public static boolean validateName(String name) throws InvalidUserException {
+	        if (name == null)
+	            throw new InvalidUserException("Username is null");
 
-		if (driver != null && validateAadharnumber(driver.getAadhar_number())
-				&& validateLicensencenumber(driver.getLicensence_number())
-				&& validateExperience(driver.getExperience())) {
-			return true;
-		} else {
-			throw new InvalidDriverException("Driver details not valid");
+	        String regex = "^[A-Za-z]\\w{2,29}$";
+	        Pattern p = Pattern.compile(regex);
+	        Matcher m = p.matcher(name);
+
+	        if (m.matches()) {
+	            return true;
+	        } else {
+	            throw new InvalidUserException("Invalid username format");
+	        }
+	    }
+
+	    public static boolean validatePassword(String password) throws InvalidUserException {
+	        if (password == null)
+	            throw new InvalidUserException("Password is null");
+
+	        String pattern_string = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=])(?=.*[^\\s]).{8,}$";
+
+	        if (Pattern.matches(pattern_string, password)) {
+	            return true;
+	        } else {
+	            throw new InvalidUserException("Invalid password format");
+	        }
+	    }
+
+	    public static boolean validateEmail(String email) throws InvalidUserException {
+	        if (email == null)
+	            throw new InvalidUserException("Email is null");
+
+	        String regex = "^.*@.*\\..*$";
+
+	        if (Pattern.matches(regex, email)) {
+	            return true;
+	        } else {
+	            throw new InvalidUserException("Invalid email format");
+	        }
+	    }
+
+	    public static boolean validatePhone(String phone) throws InvalidUserException {
+	        if (phone == null)
+	            throw new InvalidUserException("Phone number is null");
+
+	        String regex = "^[6789]\\d{9}$";
+
+	        if (Pattern.matches(regex, phone)) { 
+	            return true;
+	        } else {
+	            throw new InvalidUserException("Invalid phone number format");
+	        }
+	    }
+	    public void validLoggedUser(User user) throws InvalidUserException {
+
+			if (user == null)
+				throw new InvalidUserException("Cannot get user's details");
+
 		}
+		public static boolean validateLicensencenumber(String licensence_number) {
+			boolean match = false;
 
-	} 
-	// This code is validating the valid AadharNumber to store data in Driver table
+			if (licensence_number == null)
+				return false;
 
-	public static boolean validateAadharnumber(long aadhar_number) {
-		boolean match = false;
-		String aadhar = Long.toString(aadhar_number);
-		if (aadhar == null)
-			return false;
+			String regex = "^[A-Z]{2}\\d{13}$";
+			Pattern p = Pattern.compile(regex);
+			Matcher m = p.matcher(licensence_number);
+			match = m.matches();
+			if (match) {
+				System.out.println("The given DL number is valid.");
+			} else {
+				System.out.println("The given DL number is not valid please enter vaild number");
+			}
 
-		String regex = "^\\d{12}$";
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(aadhar);
-		match = m.matches();
-		if (match) {
-			System.out.println("The given Aadhar number is valid.");
-		} else {
-			System.out.println("The given Aadhar number is not valid please enter 12 digits vaild number");
+			return match;
 		}
-
-		return match;
 	}
-	// This code is validating the valid LicenseNumber to store data in Driver table
-
-	public static boolean validateLicensencenumber(String licensence_number) {
-		boolean match = false;
-
-		if (licensence_number == null)
-			return false;
-
-		String regex = "^[A-Z]{2}\\d{13}$";
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(licensence_number);
-		match = m.matches();
-		if (match) {
-			System.out.println("The given DL number is valid.");
-		} else {
-			System.out.println("The given DL number is not valid please enter vaild number");
-		}
-
-		return match;
-	}
-	// This code is validating the valid DriverExperience to store value in Driver
-	// table
-
-	public static boolean validateExperience(int experience) {
-		boolean match = false;
-		String exp = Integer.toString(experience);
-		if (exp == null)
-			return false;
-
-		String regex = "^[1-9]\\d*$";
-
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(exp);
-		match = m.matches();
-		if (match) {
-			System.out.println("The given Experience year is valid.");
-		} else {
-			System.out.println("The given Experience year is not valid please enter vaild year");
-		}
-
-		return match;
-	}
-}

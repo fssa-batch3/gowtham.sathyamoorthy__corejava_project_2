@@ -63,6 +63,10 @@ public class Car {
 	}
 	// This is getters and setters for CarModel
 
+	public Car() {
+		
+	}
+
 	public String getCarmodel() {
 		return carmodel;
 	}
