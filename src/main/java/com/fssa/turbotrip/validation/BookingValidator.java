@@ -14,7 +14,7 @@ public class BookingValidator {
 				&& validateTime(book.getBooking_time()) && validateDate(book.getBooking_date()) && validateseat(book.getSeat()) ) {
 			return true;
 		} else {
-			throw new InvalidBookingException("The giver car details not valid");
+			throw new InvalidBookingException("The given booking detail is not valid");
 		}
 
 	}
@@ -55,26 +55,20 @@ public class BookingValidator {
 		return match;
 	}
 	
-	public static boolean validateseat(int i) {
-	    boolean match = false;
+	public static boolean validateseat(int seatNumber) {
+	    boolean isValid = false;
 
-	    if (i == 0)
-	        return false;
-
-	    // Convert the integer to a string
-	    String iAsString = Integer.toString(i);
-
-	    String patternString = "^[0-9]+$";
-	    match = Pattern.matches(patternString, iAsString);
-
-	    if (match) {
+	    
+	    if (seatNumber >= 1 && seatNumber <= 5) {
+	        isValid = true;
 	        System.out.println("Valid Seat selection.");
 	    } else {
 	        System.out.println("Invalid Seat selection.");
 	    }
 
-	    return match;
+	    return isValid;
 	}
+
 	
 	public static boolean validateTime(String time) {
 		boolean match = false; 
@@ -101,7 +95,8 @@ public class BookingValidator {
 		if (date == null)
 			return false;
 
-		String pattern_string = "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
+		String pattern_string = "^\\d{4}-\\d{2}-\\d{2}$";
+				
 		// example date is 2023-12-09
 		match = Pattern.matches(pattern_string, date);
 
