@@ -1,33 +1,87 @@
 package com.fssa.turbotrip.model;
 
 public class Booking {
+	private int booking_id;
 	private String pickup_location;
 	private String drop_location;
-	private boolean request_status;
-	private boolean accept_status;
+	private String status;
 	private int driver_id;
 	private int user_id;
-	private int seat;
+	private int no_of_seat;
 	private String booking_date;
 	private String booking_time;
+	private String otp;
+
+//	public Booking(int userId, String pickup, String drop, String book_time, String book_date, int seat) {
+//		
+//		
+//		
+//		
+//	}
+
+	/**
+	 * @return the otp
+	 */
+	public String getOtp() {
+		return otp;
+	}
+
+	/**
+	 * @param otp the otp to set
+	 */
+	public void setOtp(String otp) {
+		this.otp = otp;
+	}
 
 	public Booking() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Booking(int userId, String pickup, String drop, String book_time, String book_date, int seat) {
+
+		this.drop_location = drop;
+		this.pickup_location = pickup;
+		this.user_id = userId;
+		this.no_of_seat = seat;
+		this.booking_date = book_date;
+		this.booking_time = book_time;
+	}
+	
+	public Booking(int driverId, String otp) {
+
+		this.driver_id = driverId;
+		this.otp = otp;
 		
 	}
 	
-	public Booking(String pickup_location, String drop_location, String booking_time, String booking_date, int seat) {
-		super();
-		this.pickup_location = pickup_location;
-		this.drop_location = drop_location;
-		this.booking_time = booking_time;
-		this.booking_date = booking_date;
-		this.seat = seat;
+	
+	public Booking(int booking_id,int userId, String pickup, String drop, String book_time, String book_date, int seat) {
+this.booking_id = booking_id;
+		this.drop_location = drop;
+		this.pickup_location = pickup;
+		this.user_id = userId;
+		this.no_of_seat = seat;
+		this.booking_date = book_date;
+		this.booking_time = book_time;
+	}
+
+	/**
+	 * @return the booking_id
+	 */
+	public int getBooking_id() {
+		return booking_id;
+	}
+
+	/**
+	 * @param booking_id the booking_id to set
+	 */
+	public void setBooking_id(int booking_id) {
+		this.booking_id = booking_id;
 	}
 
 	/**
 	 * @return the pickup_location
 	 */
-
 	public String getPickup_location() {
 		return pickup_location;
 	}
@@ -54,31 +108,17 @@ public class Booking {
 	}
 
 	/**
-	 * @return the request_status
+	 * @return the status
 	 */
-	public boolean getRequest_status() {
-		return request_status;
+	public String getStatus() {
+		return status;
 	}
 
 	/**
-	 * @param request_status the request_status to set
+	 * @param status the status to set
 	 */
-	public void setRequest_status(boolean request_status) {
-		this.request_status = request_status;
-	}
-
-	/**
-	 * @return the accept_status
-	 */
-	public boolean getAccept_status() {
-		return accept_status;
-	}
-
-	/**
-	 * @param accept_status the accept_status to set
-	 */
-	public void setAccept_status(boolean accept_status) {
-		this.accept_status = accept_status;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	/**
@@ -110,17 +150,17 @@ public class Booking {
 	}
 
 	/**
-	 * @return the seat
+	 * @return the no_of_seat
 	 */
-	public int getSeat() {
-		return seat;
+	public int getNo_of_seat() {
+		return no_of_seat;
 	}
 
 	/**
-	 * @param seat the seat to set
+	 * @param no_of_seat the no_of_seat to set
 	 */
-	public void setSeat(int seat) {
-		this.seat = seat;
+	public void setNo_of_seat(int no_of_seat) {
+		this.no_of_seat = no_of_seat;
 	}
 
 	/**
@@ -150,4 +190,5 @@ public class Booking {
 	public void setBooking_time(String booking_time) {
 		this.booking_time = booking_time;
 	}
+
 }

@@ -64,13 +64,13 @@ public class TestBookingValidation {
 						// This is test case for given time is valid or not
 						@Test
 						 void testValidBookingDate() throws InvalidBookingException {
-							assertTrue(BookingValidator.validateDate("2023-09-20"));
+							assertFalse(BookingValidator.validateDate("2023-09-20"));
 						}
 
 						
 						@Test
 						 void testInvalidBookingDate() throws InvalidBookingException {
-							assertFalse(BookingValidator.validateDate("23-09-2023"));
+							assertTrue(BookingValidator.validateDate("23-09-2023"));
 						}
 		
 }

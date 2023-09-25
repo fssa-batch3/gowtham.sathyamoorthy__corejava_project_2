@@ -1,4 +1,4 @@
- package com.fssa.turbotrip.model;
+package com.fssa.turbotrip.model;
 
 public class User {
 
@@ -19,20 +19,18 @@ public class User {
 //		this.setIsdriver(isdriver);
 //		
 //	}
-	
+
 	public User(String username, String email, String phone, String password, int isdeleted, String license_number) {
-	
+
 		this.email = email;
-		this.username = username; 
+		this.username = username;
 		this.password = password;
 		this.phone = phone;
 		this.setIsdeleted(isdeleted);
 		this.setlicense_number(license_number);
-		
+
 	}
 	// This is getters and setters for UserModel
- 
-	
 
 	public String getPhone() {
 		return phone;
@@ -47,19 +45,24 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
-	
+
 	public User() {
-	
+
 	}
 
 	public User(String name, String loggedEmail, String password2, String phonenumber) {
-		
+
 		this.username = name;
 		this.email = loggedEmail;
 		this.password = password2;
 		this.phone = phonenumber;
-		
 
+	}
+
+	public User(String name, String loggedEmail, String phonenumber) {
+		this.username = name;
+		this.email = loggedEmail;
+		this.phone = phonenumber;
 	}
 
 	public void setEmail(String email) {
@@ -91,8 +94,7 @@ public class User {
 		return "User [email=" + email + ", username=" + username + ", password=" + password + "]";
 	}
 
-	public String getlicense_number()
-	 {
+	public String getlicense_number() {
 		return license_number;
 	}
 
@@ -107,6 +109,7 @@ public class User {
 	public void setIsdeleted(int isdeleted) {
 		this.isdeleted = isdeleted;
 	}
+
 	/**
 	 * @return the user_id
 	 */

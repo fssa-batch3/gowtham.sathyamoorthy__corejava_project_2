@@ -87,7 +87,7 @@ public class CarDAO {
 	 * @throws DAOException If there is an error during the update process, a DAOException is thrown.
 	 */
 
-	public static boolean updateCar(Car car, String Carno) throws DAOException {
+	public boolean updateCar(Car car, String Carno) throws DAOException {
 		String updateQuery = "UPDATE car_list SET car_image=?, car_description=? WHERE car_number=?";
 		try (Connection connect = ConnectionUtil.getConnection();
 				PreparedStatement pst = connect.prepareStatement(updateQuery)) {
@@ -190,6 +190,7 @@ public class CarDAO {
 				String Description = rs.getString("car_description");
 
 				Car car = new Car(carId, CarNo, Carmodel, CarImage, Description);
+				System.out.println(car.toString());
 				cars.add(car);
 
 			}

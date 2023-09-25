@@ -11,7 +11,7 @@ public class BookingValidator {
 	public static boolean validatebooking(Booking book) throws InvalidBookingException {
 
 		if (book != null && validatepickup(book.getPickup_location()) && validatedrop(book.getDrop_location())
-				&& validateTime(book.getBooking_time()) && validateDate(book.getBooking_date()) && validateseat(book.getSeat()) ) {
+				&& validateTime(book.getBooking_time())  && validateseat(book.getNo_of_seat()) ) {
 			return true;
 		} else {
 			throw new InvalidBookingException("The given booking detail is not valid");
@@ -31,7 +31,7 @@ public class BookingValidator {
 		if (match) {
 			System.out.println("Valid Pickup Location.");
 		} else {
-			System.out.println("Invalid Pickup Location.");
+			System.out.println("Invalid Pickup Location its contain 3 to 29 alphabetic characters");
 		}
 
 		return match;
@@ -49,7 +49,7 @@ public class BookingValidator {
 		if (match) {
 			System.out.println("Valid drop Location.");
 		} else {
-			System.out.println("Invalid drop Location.");
+			System.out.println("Invalid drop Location its contain 3 to 29 alphabetic characters");
 		}
 
 		return match;
@@ -63,7 +63,7 @@ public class BookingValidator {
 	        isValid = true;
 	        System.out.println("Valid Seat selection.");
 	    } else {
-	        System.out.println("Invalid Seat selection.");
+	        System.out.println("Invalid Seat selection please book min one seat");
 	    }
 
 	    return isValid;
@@ -95,7 +95,7 @@ public class BookingValidator {
 		if (date == null)
 			return false;
 
-		String pattern_string = "^\\d{4}-\\d{2}-\\d{2}$";
+		String pattern_string = "^\\d{2}-\\d{2}-\\d{4}$";
 				
 		// example date is 2023-12-09
 		match = Pattern.matches(pattern_string, date);

@@ -65,6 +65,17 @@ public class UserService {
 		}
 	}
 	
+	public User getUserById(int id) throws ServiceException {
+		UserDAO userDAO = new UserDAO();
+
+		try {
+			User loggedUser = userDAO.getUserById(id);
+			return loggedUser;
+		} catch (DAOException e) {
+			throw new ServiceException( e);
+		}
+	}
+	
 	public static void main(String[] args) {
 	
 		
@@ -78,6 +89,18 @@ public class UserService {
 		
 	}
 
+	
+	
+	public int findIdByEmail(String email) throws ServiceException {
+		int user;
+		try {
+			user = UserDAO.findIdByEmail(email);
+			return user;
+		} catch (DAOException e) {
+			throw new ServiceException(e.getMessage());
+		}
+
+	}
 	/**
 	 * 
 	 * @return

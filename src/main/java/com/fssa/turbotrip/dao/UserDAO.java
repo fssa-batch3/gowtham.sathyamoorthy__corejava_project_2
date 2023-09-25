@@ -150,14 +150,44 @@ public class UserDAO {
 		return null;
 
 	}
+	
+	public User getUserById(int id) throws DAOException {
 
-	public static String findTypeBylicenseNumber(String  email) throws DAOException {
+		final String SELECTQUERY = "SELECT * FROM user WHERE user_id = ?";
+
+		try (Connection connect = ConnectionUtil.getConnection();
+				PreparedStatement pstmt = connect.prepareStatement(SELECTQUERY)) {
+
+			pstmt.setInt(1, id);
+
+			try (ResultSet rs = pstmt.executeQuery()) {
+
+				if (rs.next()) {
+
+					String name = rs.getString("username");
+					String loggedEmail = rs.getString("email");
+					String phonenumber = rs.getString("phone");
+
+					return new User(name, loggedEmail, phonenumber);
+
+				}
+
+			}
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+		return null;
+
+	}
+
+	public static String findTypeBylicenseNumber(String email) throws DAOException {
 		String sql = "SELECT  license_number FROM user WHERE email = ?";
 		String type = null; // Initialize to a default value
 		try (Connection connection = ConnectionUtil.getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-			preparedStatement.setString(1,  email);
+			preparedStatement.setString(1, email);
 
 			// Execute the SQL query
 			ResultSet resultSet = preparedStatement.executeQuery();

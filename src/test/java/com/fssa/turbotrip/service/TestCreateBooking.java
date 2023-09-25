@@ -16,15 +16,12 @@ public class TestCreateBooking {
 	
 		Booking book = new Booking();
 		book.setUser_id(1);
-		book.setDriver_id(2);
 		book.setPickup_location("Perungudi");
-		book.setDrop_location("Tambaram");
+		book.setDrop_location("Tharamani");
 		book.setBooking_time("09:30");
-		book.setBooking_date("2023-09-20");
-		book.setSeat(2);
+		book.setBooking_date("20-09-2023");
+		book.setNo_of_seat(2);
 		
-	
-	
 		try {
 
 			assertTrue(bookService.createBooking(book));
