@@ -46,7 +46,7 @@ public class DriverService {
 			}
 
 		} catch (DAOException | InvalidUserException e) {
-			throw new ServiceException(e);
+			throw new ServiceException(e.getMessage());
 		}
 
 	}

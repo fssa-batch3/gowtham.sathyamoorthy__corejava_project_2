@@ -27,7 +27,7 @@ public class UserValidator {
         if (m.matches()) {
             return true;
         } else {
-            throw new InvalidUserException("Invalid username format Eg: Gowtham");
+            throw new InvalidUserException("Invalid username format Ex: Gowtham");
         }
     }
 
@@ -40,7 +40,7 @@ public class UserValidator {
         if (Pattern.matches(pattern_string, password)) {
             return true;
         } else {
-            throw new InvalidUserException("Invalid password format Eg: Password@123");
+            throw new InvalidUserException("Invalid password format Ex: Password@123");
         }
     }
 
@@ -53,7 +53,7 @@ public class UserValidator {
         if (Pattern.matches(regex, email)) {
             return true;
         } else {
-            throw new InvalidUserException("Invalid email format Eg: john@gmail.com");
+            throw new InvalidUserException("Invalid email format Ex: john@gmail.com");
         }
     }
 
@@ -66,7 +66,7 @@ public class UserValidator {
         if (Pattern.matches(regex, phone)) { 
             return true;
         } else {
-            throw new InvalidUserException("Invalid phone number format Eg: 9551555231");
+            throw new InvalidUserException("Invalid phone number format Ex: 9551555231");
         }
     }
     public void validLoggedUser(User user) throws InvalidUserException {
