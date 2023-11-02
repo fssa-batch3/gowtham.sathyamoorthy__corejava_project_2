@@ -83,7 +83,7 @@ public class BookingDAO {
     }
 
     public static Booking findObjectByUserId(int user_id) throws DAOException {
-        String sql = "SELECT otp, driver_id FROM booking WHERE user_id = ? ORDER BY booking_id DESC LIMIT 1";
+        String sql = "SELECT booking_id, otp, driver_id FROM booking WHERE user_id = ? ORDER BY booking_id DESC LIMIT 1";
         try (Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
@@ -96,8 +96,9 @@ public class BookingDAO {
 
             if (resultSet.next()) {
                 String otp = resultSet.getString("otp");
+                int bookingid = resultSet.getInt("booking_id");
                 int driverId = resultSet.getInt("driver_id");
-                Booking booking = new Booking(driverId, otp);
+                Booking booking = new Booking(driverId, otp,bookingid);
 
                 System.out.println("Retrieved OTP: " + otp);
 

@@ -54,6 +54,13 @@ public class Booking {
 		
 	}
 	
+	public Booking(int driverId, String otp, int booking_id) {
+
+		this.driver_id = driverId;
+		this.otp = otp;
+		this.booking_id = booking_id;
+	}
+	
 	
 	public Booking(int booking_id,int userId, String pickup, String drop, String book_time, String book_date, int seat) {
 this.booking_id = booking_id;
