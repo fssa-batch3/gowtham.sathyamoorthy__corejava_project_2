@@ -4,16 +4,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.fssa.turbotrip.model.User;
+import com.fssa.turbotrip.utils.Logger;
 import com.fssa.turbotrip.validation.exception.InvalidUserException;
 
 public class UserValidator {
+    
     public static boolean validateUser(User user) throws InvalidUserException {
         if (user != null && validateName(user.getUsername()) && validatePassword(user.getPassword())
                 && validateEmail(user.getEmail()) && validatePhone(user.getPhone())) {
             return true;
         } else {
             throw new InvalidUserException("User details not valid");
-        }
+        } 
     }
 
     public static boolean validateName(String name) throws InvalidUserException {

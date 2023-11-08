@@ -12,9 +12,11 @@ import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Car;
 
 import com.fssa.turbotrip.utils.ConnectionUtil;
+import com.fssa.turbotrip.utils.Logger;
 
 public class CarDAO {
 	private static final String CARNUMBER = "car_number";
+    static Logger log = new Logger();
 
 	/**
 	 * 
@@ -190,7 +192,7 @@ public class CarDAO {
 				String Description = rs.getString("car_description");
 
 				Car car = new Car(carId, CarNo, Carmodel, CarImage, Description);
-				System.out.println(car.toString());
+				log.debug(car.toString());
 				cars.add(car);
 
 			}

@@ -11,8 +11,10 @@ import java.util.List;
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.utils.ConnectionUtil;
+import com.fssa.turbotrip.utils.Logger;
 
 public class UserDAO {
+    static Logger log = new Logger();
 	// this code is checking login user from the User table
 	// Get user from DB - Login
 	public boolean login(String email, String password) throws DAOException {
@@ -20,7 +22,7 @@ public class UserDAO {
 		try (Connection connection = ConnectionUtil.getConnection();
 				PreparedStatement statement = connection.prepareStatement(selectQuery)) {
 
-			System.out.println(email);
+		log.debug(email);
 			// Set the email parameter
 			statement.setString(1, email);
  

@@ -4,10 +4,12 @@ import java.util.regex.Pattern;
 
 import com.fssa.turbotrip.model.Booking;
 import com.fssa.turbotrip.model.Car;
+import com.fssa.turbotrip.utils.Logger;
 import com.fssa.turbotrip.validation.exception.InvalidBookingException;
 import com.fssa.turbotrip.validation.exception.InvalidCarException;
 
 public class BookingValidator {
+    static Logger log = new Logger();
 	public static boolean validatebooking(Booking book) throws InvalidBookingException {
 
 		if (book != null && validatepickup(book.getPickup_location()) && validatedrop(book.getDrop_location())
@@ -39,7 +41,7 @@ public class BookingValidator {
 	
 	public static boolean validatedrop(String drop) {
 		boolean match = false; 
-
+ 
 		if (drop == null)
 			return false;
 
@@ -47,9 +49,9 @@ public class BookingValidator {
 		match = Pattern.matches(pattern_string, drop);
 
 		if (match) {
-			System.out.println("Valid drop Location.");
+			log.debug("Valid drop Location.");
 		} else {
-			System.out.println("Invalid drop Location its contain 3 to 29 alphabetic characters");
+			log.debug("Invalid drop Location its contain 3 to 29 alphabetic characters");
 		}
 
 		return match;
@@ -61,9 +63,9 @@ public class BookingValidator {
 	    
 	    if (seatNumber >= 1 && seatNumber <= 5) {
 	        isValid = true;
-	        System.out.println("Valid Seat selection.");
+	        log.debug("Valid Seat selection.");
 	    } else {
-	        System.out.println("Invalid Seat selection please book min one seat");
+	        log.debug("Invalid Seat selection please book min one seat");
 	    }
 
 	    return isValid;
@@ -80,9 +82,9 @@ public class BookingValidator {
 		match = Pattern.matches(pattern_string, time);
 
 		if (match) {
-			System.out.println("The given Time is valid.");
+			log.debug("The given Time is valid.");
 		} else {
-			System.out.println("The given Time is Invalid.");
+		log.debug("The given Time is Invalid.");
 		}
 
 		return match;
@@ -101,9 +103,9 @@ public class BookingValidator {
 		match = Pattern.matches(pattern_string, date);
 
 		if (match) {
-			System.out.println("The given Date is valid.");
+			log.debug("The given Date is valid.");
 		} else {
-			System.out.println("The given Date is Invalid.");
+			log.debug("The given Date is Invalid.");
 		}
 
 		return match;

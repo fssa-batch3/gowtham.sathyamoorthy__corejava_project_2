@@ -91,8 +91,8 @@ public class BookingDAO {
 
             preparedStatement.setInt(1, user_id);
 
-            System.out.println("Executing SQL query: " + sql);
-            System.out.println("User ID: " + user_id);
+            log.debug("Executing SQL query: " + sql);
+            log.debug("User ID: " + user_id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -102,7 +102,7 @@ public class BookingDAO {
                 int driverId = resultSet.getInt("driver_id");
                 Booking booking = new Booking(driverId, otp,bookingid);
 
-                System.out.println("Retrieved OTP: " + otp);
+                log.debug("Retrieved OTP: " + otp);
 
                 return booking;
             }
@@ -123,14 +123,14 @@ public class BookingDAO {
 
             preparedStatement.setInt(1, user_id);
 
-            System.out.println("Executing SQL query: " + sql);
-            System.out.println("User ID: " + user_id);
+            log.debug("Executing SQL query: " + sql);
+            log.debug("User ID: " + user_id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 String otp = resultSet.getString("otp");
-                System.out.println("Retrieved OTP: " + otp);
+                log.debug("Retrieved OTP: " + otp);
                 return otp;
             }
 

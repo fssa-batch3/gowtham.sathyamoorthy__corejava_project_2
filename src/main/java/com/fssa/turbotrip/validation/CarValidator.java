@@ -3,10 +3,13 @@ package com.fssa.turbotrip.validation;
 import java.util.regex.Pattern;
 
 import com.fssa.turbotrip.model.Car;
+import com.fssa.turbotrip.utils.Logger;
 import com.fssa.turbotrip.validation.exception.InvalidCarException;
  
 public class CarValidator {
+    static Logger log = new Logger();
 // This code for validating the given inputs or valid or not!!!
+	
 	public static boolean validateCar(Car car) throws InvalidCarException {
 
 		if (car != null && validateURL(car.getCarImage()) && validateModel(car.getCarmodel())
@@ -15,7 +18,7 @@ public class CarValidator {
 		} else {
 			throw new InvalidCarException("The giver car details not valid");
 		}
-
+ 
 	}
 
 	public static boolean validateupdateCar(Car car) throws InvalidCarException {
@@ -48,9 +51,9 @@ public class CarValidator {
 		match = Pattern.matches(pattern_string, model);
 
 		if (match) {
-			System.out.println("Valid Car Model.");
+			log.debug("Valid Car Model.");
 		} else {
-			System.out.println("Invalid Car Model.");
+			log.debug("Invalid Car Model.");
 		}
 
 		return match;
@@ -67,9 +70,9 @@ public class CarValidator {
 
 		if (match) { 
 
-			System.out.println("Valid Car Registration.");
+			log.debug("Valid Car Registration.");
 		} else {
-			System.out.println("Invalid Car Registration.");
+			log.debug("Invalid Car Registration.");
 		}
 
 		return match;
@@ -86,9 +89,9 @@ public class CarValidator {
 
 		if (match) {
 
-			System.out.println("Valid Description.");
+			log.debug("Valid Description.");
 		} else {
-			System.out.println("Invalid Description.");
+			log.debug("Invalid Description.");
 		}
 
 		return match;
