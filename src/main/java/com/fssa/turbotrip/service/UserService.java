@@ -80,12 +80,14 @@ public class UserService {
 	
 		
 		try {
-			User user = new UserService().getUser("gowthaman.krish1705@gmail.com");
-			
-			System.out.println(user.getEmail()+" "+user.getPassword()+" "+user.getUsername()+" "+user.getPhone());
+		    User user = new UserService().getUser("gowthaman.krish1705@gmail.com");
+		    
+		    
+		     log.debug(user.getEmail()+" "+user.getPassword()+" "+user.getUsername()+" "+user.getPhone());
 		} catch (ServiceException e) {
-			e.printStackTrace();
+		    e.printStackTrace();
 		}
+
 		
 	}
 
@@ -99,7 +101,7 @@ public class UserService {
 		} catch (DAOException e) {
 			throw new ServiceException(e.getMessage());
 		}
-
+ 
 	}
 	/**
 	 * 

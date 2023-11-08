@@ -47,16 +47,17 @@ public class UserValidator {
     }
 
     public static boolean validateEmail(String email) throws InvalidUserException {
-        if (email == null)
-            throw new InvalidUserException("Email is null");
+    	if (email == null)
+    	    throw new InvalidUserException("Email is null");
 
-        String regex = "^.*@.*\\..*$";
+    	String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$";
 
-        if (Pattern.matches(regex, email)) {
-            return true;
-        } else {
-            throw new InvalidUserException("Invalid email format Ex: john@gmail.com");
-        }
+    	if (Pattern.matches(regex, email)) {
+    	    return true;
+    	} else {
+    	    throw new InvalidUserException("Invalid email format Ex: john@gmail.com");
+    	}
+
     }
 
     public static boolean validatePhone(String phone) throws InvalidUserException {
