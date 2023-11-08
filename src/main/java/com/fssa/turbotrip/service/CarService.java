@@ -1,6 +1,6 @@
 package com.fssa.turbotrip.service;
 
-import java.sql.SQLException;
+import java.sql.SQLException; 
 import java.util.List;
 
 import com.fssa.turbotrip.dao.CarDAO;
@@ -13,7 +13,7 @@ import com.fssa.turbotrip.validation.CarValidator;
 import com.fssa.turbotrip.validation.exception.InvalidCarException;
 
 // This code is checking all the validation or matched to the given input or not !
-public class CarService {
+public class CarService { 
 	static Logger log = new Logger();
 
 	public boolean createCar(Car car) throws ServiceException {

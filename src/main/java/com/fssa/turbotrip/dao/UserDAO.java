@@ -13,7 +13,7 @@ import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.utils.ConnectionUtil;
 
 public class UserDAO {
-	// this code is checking togin user from the User table
+	// this code is checking login user from the User table
 	// Get user from DB - Login
 	public boolean login(String email, String password) throws DAOException {
 		String selectQuery = "SELECT * FROM user WHERE email = ?";
@@ -23,7 +23,7 @@ public class UserDAO {
 			System.out.println(email);
 			// Set the email parameter
 			statement.setString(1, email);
-
+ 
 			// Execute the query
 			try (ResultSet resultSet = statement.executeQuery()) {
 				boolean userExists = resultSet.next();

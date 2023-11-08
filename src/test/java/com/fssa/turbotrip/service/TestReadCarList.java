@@ -25,7 +25,7 @@ public class TestReadCarList {
 		CarDAO c = new CarDAO();
 	CarService carService = new CarService();
 		System.out.println(carService.listCar(car1));
-	}
+	} 
 	
 	@Test
 	 void testUpdateSuccess() throws ServiceException, InvalidCarException, DAOException {

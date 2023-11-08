@@ -11,9 +11,11 @@ import java.util.List;
 import com.fssa.turbotrip.dao.exception.DAOException;
 import com.fssa.turbotrip.model.Booking;
 import com.fssa.turbotrip.utils.ConnectionUtil;
+import com.fssa.turbotrip.utils.Logger;
 
 public class BookingDAO {
     private static final String DATABASE_ERROR_MESSAGE = "Database error: ";
+    static Logger log = new Logger();
 
     public boolean createBooking(Booking booking) throws DAOException {
         final String insertQuery = "INSERT INTO booking (user_id, pickup_location, drop_location, booking_time, booking_date, no_of_seat) VALUES (?,?,?,?,?,?)";
@@ -40,7 +42,7 @@ public class BookingDAO {
                 Statement statement = connect.createStatement();
                 ResultSet rs = statement.executeQuery(selectCarListQuery);) {
 
-            while (rs.next()) {
+            while (rs.next()) { 
                 int bookingId = rs.getInt("booking_id");
                 int userId = rs.getInt("user_id");
                 String pickup = rs.getString("pickup_location");
@@ -50,7 +52,7 @@ public class BookingDAO {
                 int seat = rs.getInt("no_of_seat");
 
                 Booking booking = new Booking(bookingId, userId, pickup, drop, book_time, book_date, seat);
-                System.out.println(booking.toString());
+                log.debug(booking.toString());
                 book.add(booking);
             }
 
@@ -153,7 +155,7 @@ public class BookingDAO {
             pst.setInt(1, Driver_id);
             pst.setString(2, generatedOTP);
             pst.setInt(3, Booking_id);
-
+ 
             rows = pst.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException("Error while updating booking: " + e);
