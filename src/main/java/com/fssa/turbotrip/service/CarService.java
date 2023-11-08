@@ -36,7 +36,7 @@ public class CarService {
 
 	// this code is checking the list cars to read cars
 
-	public String listCar(Car car) throws ServiceException, InvalidCarException, DAOException {
+	public String listCar(Car car) throws DAOException {
 		CarDAO CarDAO = new CarDAO();
 		return CarDAO.readCar(car);
 	}

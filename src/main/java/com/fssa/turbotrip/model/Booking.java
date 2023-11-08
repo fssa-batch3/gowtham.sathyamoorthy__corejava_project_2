@@ -12,12 +12,6 @@ public class Booking {
 	private String booking_time;
 	private String otp;
 
-//	public Booking(int userId, String pickup, String drop, String book_time, String book_date, int seat) {
-//		
-//		
-//		
-//		
-//	}
 
 	/**
 	 * @return the otp

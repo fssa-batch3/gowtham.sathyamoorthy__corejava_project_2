@@ -233,8 +233,6 @@ public class UserDAO {
 		return userId;
 	}
 
-//	public static void main(String[] args) {
-//		User users = new User("Krishna", "gowtham.krish1705@gmail.com", "9551555232", "Gowthi@123", 0, false);
-//	}
+
 
 }
