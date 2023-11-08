@@ -23,7 +23,7 @@ import com.fssa.turbotrip.validation.exception.InvalidUserException;
 	        String regex = "^[A-Za-z]\\w{2,29}$";
 	        Pattern p = Pattern.compile(regex);
 	        Matcher m = p.matcher(name);
-
+ 
 	        if (m.matches()) {
 	            return true;
 	        } else {
@@ -45,16 +45,17 @@ import com.fssa.turbotrip.validation.exception.InvalidUserException;
 	    }
 
 	    public static boolean validateEmail(String email) throws InvalidUserException {
-	        if (email == null)
-	            throw new InvalidUserException("Email is null");
+	    	if (email == null)
+	    	    throw new InvalidUserException("Email is null");
 
-	        String regex = "^.*@.*\\..*$";
+	    	String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
 
-	        if (Pattern.matches(regex, email)) {
-	            return true;
-	        } else {
-	            throw new InvalidUserException("Invalid email format");
-	        }
+	    	if (Pattern.matches(regex, email)) {
+	    	    return true;
+	    	} else {
+	    	    throw new InvalidUserException("Invalid email format");
+	    	}
+
 	    }
 
 	    public static boolean validatePhone(String phone) throws InvalidUserException {

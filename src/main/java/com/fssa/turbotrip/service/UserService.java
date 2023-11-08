@@ -85,7 +85,7 @@ public class UserService {
 		    
 		     log.debug(user.getEmail()+" "+user.getPassword()+" "+user.getUsername()+" "+user.getPhone());
 		} catch (ServiceException e) {
-		    e.printStackTrace();
+		   log.debug(e);
 		}
 
 		
