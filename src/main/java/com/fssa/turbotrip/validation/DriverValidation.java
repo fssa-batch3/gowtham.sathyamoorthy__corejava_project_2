@@ -7,6 +7,7 @@ import com.fssa.turbotrip.model.User;
 import com.fssa.turbotrip.validation.exception.InvalidUserException;
 
 	public class DriverValidation {
+		
 	    public static boolean validateUser(User user) throws InvalidUserException {
 	        if (user != null && validateName(user.getUsername()) && validatePassword(user.getPassword())
 	                && validateEmail(user.getEmail()) && validatePhone(user.getPhone()) && validateLicensencenumber(user.getlicense_number()) ) {
